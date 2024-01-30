@@ -1,4 +1,4 @@
-import ProfileImg from "../../images/10808dc6cd9b78f0153e68aae9942abc.jpg";
+import ProfileImg from "../../images/ProfileImage.jpg";
 import Event from "../Event/Event";
 import Media from "../Media/Media";
 

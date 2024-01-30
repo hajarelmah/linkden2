@@ -7,7 +7,7 @@ const Follow = () => {
             {/* Right side */}
             <div className="col-md-9">
                 <div className="sections">
-                <h6 className="sarvesh-name pt-2 ps-2">Sarvesh Munde Network</h6>
+                <h6 className="sarvesh-name pt-2 ps-2">Sohan Dahatonde Network</h6>
                     <hr />
                     <div>
                         <div className="d-flex flex-wrap border-bottom">

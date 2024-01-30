@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ProfileImg from "../images/10808dc6cd9b78f0153e68aae9942abc.jpg";
+import ProfileImg from "../images/ProfileImage.jpg";
 
 
 const Profile = () => {
@@ -15,7 +15,7 @@ const Profile = () => {
             />
           </div>
           <div className="w-75 text-start fs-6">
-            <div className="fw-bold">Name</div>
+            <div className="fw-bold">Sohan Dahatonde</div>
             Software developer with ethics, have passionately curious about
             programming languages
           </div>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ProfileImg from "../../images/10808dc6cd9b78f0153e68aae9942abc.jpg";
+import ProfileImg from "../../images/ProfileImage.jpg";
 import LeftBottom from "../LeftSideBottomHome/LeftBottom";
 
 
@@ -21,7 +21,7 @@ const Left = () => {
             height: "90px",
             position: "absolute",
             width: "100px",
-            left: "170px",
+            left: "185px",
             top: "90px",
           }}
         >
@@ -37,9 +37,9 @@ const Left = () => {
         <div className="col-12 fs-5 fw-bold text-center mt-3">
         Sohan Dahatonde
         </div>
-        <div className="col-12 fs-5 fw-bold text-center mt-1">
+        {/* <div className="col-12 fs-5 fw-bold text-center mt-1">
            Sarvesh Munde
-        </div>
+        </div> */}
       </div>
       <div className="row  mx-0 p-2 mt-1">
         <div className="col-12 fs-6 text-center " style={{ color: "#5E5E5E" }}>

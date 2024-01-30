@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import ProfileImg from "../../images/10808dc6cd9b78f0153e68aae9942abc.jpg";
+import ProfileImg from "../../images/ProfileImage.jpg";
 import img from "../../images/53-533248_cartoon-person-without-face-person-cartoon-hd-png.png";
 const FixMessaing = () => {
   const [arrow,setArrow]=useState(true)

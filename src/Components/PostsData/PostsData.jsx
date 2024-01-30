@@ -40,7 +40,7 @@ const PostsData = () => {
               style={{ height: "60px", width: "60px" }}
             />
             <div className="mx-2">
-              <div className="fw-bold fs-6 ">xyz</div>
+              <div className="fw-bold fs-6 ">Rohit Mule</div>
               <div className="fs-6">Frontend Developer</div>
               <div className="fs-6">
                 2d<i className="fa-solid fa-earth-americas mx-1"></i>

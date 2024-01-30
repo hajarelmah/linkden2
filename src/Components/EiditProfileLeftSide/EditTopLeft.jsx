@@ -1,4 +1,4 @@
-import ProfileImg from "../../images/10808dc6cd9b78f0153e68aae9942abc.jpg";
+import ProfileImg from "../../images/ProfileImage.jpg";
 
 const EditTopLeft = () => {
   return (
@@ -29,7 +29,7 @@ const EditTopLeft = () => {
       </div>
       <div className="row mt-5 pt-5">
         <div className="col p-2 fw-bold fs-4">
-          XYZ 
+          Sohan Dahatonde
           <p className="fs-6 fw-normal">Software developer with ethics, have passionately curious about programming languages</p>
         </div>
       </div>
