@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../icons/174857.png";
 import ProfileImg from "../images/ProfileImage.jpg";
-import Profile from "./Profile";
+import Profile from "./ProFile";
 import Business from "./Business/Business";
 
 const NaveBar = () => {
