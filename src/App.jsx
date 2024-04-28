@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+//import { AuthWrapper } from ".auth/AuthWrapper";
 import SigninForm from "./-auth/forms/SigninForm";
 import AuthLayout from "./-auth/AuthLayout";
 import ForgotPassword from "./-auth/forms/ForgotPassword";
@@ -19,12 +20,15 @@ import Messaging from "./-root/pages/Messaging/Messaging";
 import NewJobs from "./Components/MyJob/NewJobs";
 import Interview from "./Components/Interview/Interview";
 import Pages from "./Components/PageComponent/Pages";
-
-
+import PrivateRoute from "./Components/PrivateRoute";
+import UpdateProfile from "./Components/UpdateProfile";
+import CreateCV from "./Components/CreateCV";
+import Resume from "./Components/ResumeBuilder/Resume";
 
 
 const App = () => {
   return (
+  <div className="App">
     <main
     
     >
@@ -41,6 +45,7 @@ const App = () => {
           <Route path="/Home" element={<Home/>}/>
           <Route path="/Network" element={<Network/>}/>
           <Route path="/EditProfile"  element={<EditProfile/>}/>
+          <Route path="/UpdateProfile"  element={<UpdateProfile/>}/>
           <Route path="/EventPage" element={<EventPage/>}/>
           <Route path="/Groups"  element={<Groups/>}/>
           <Route path="/Jobs"   element={<Jobs/>}/>
@@ -52,12 +57,15 @@ const App = () => {
           <Route path="/MyJob"      element={<NewJobs/>}/>
           <Route path="/Interview"  element={<Interview/>}/>
           <Route path="/Page"  element={<Pages/>}/>
+          <Route path="/Resume"  element={<Resume/>}/>
+          <Route path="/CreateCV"  element={<CreateCV/>}/>
         </Route>
 
 
      
       </Routes>
     </main>
+  </div>
   );
 };
 

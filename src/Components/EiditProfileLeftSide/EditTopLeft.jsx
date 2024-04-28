@@ -1,6 +1,14 @@
-import ProfileImg from "../../images/ProfileImage.jpg";
+import ProfileImg from "../../images/imagedeProfile.jpg";
+import { useState, useEffect } from "react";
 
 const EditTopLeft = () => {
+  const bio = sessionStorage.getItem('bio');
+  const user_name = sessionStorage.getItem('user_name');
+
+  useEffect(() => {
+   
+  }, []); // Pass an empty dependency array to run this effect only once after the initial render
+
   return (
     <div className="container-md container-fluid sections pb-3 ">
       <div className="row p-3 rounded-3" style={{ height: "160px",border:"2px solid #E8E8E8"}}>
@@ -29,8 +37,8 @@ const EditTopLeft = () => {
       </div>
       <div className="row mt-5 pt-5">
         <div className="col p-2 fw-bold fs-4">
-          Sohan Dahatonde
-          <p className="fs-6 fw-normal">Software developer with ethics, have passionately curious about programming languages</p>
+{user_name}
+          <p className="fs-6 fw-normal">{bio}</p>
         </div>
       </div>
       <div className="row mt-2 p-1 d-flex flex-wrap gap-md-3">

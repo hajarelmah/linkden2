@@ -1,8 +1,8 @@
-import ProfileImg from "../../images/10808dc6cd9b78f0153e68aae9942abc.jpg";
-import PostImg from "../../images/pexels-paras-katwal-4218883.jpg";
-import PostImg2 from "../../images/10808dc6cd9b78f0153e68aae9942abc.jpg"
+import ProfileImg from "../../images/imagedeProfile.jpg";
+import PostImg from "../../images/teletravail_cumul_job-1200x600.jpg";
+import PostImg2 from "../../images/Travail-en-ligne-comment-rester-en-sécurité .png"
 
-import img from "../../images/attractive-man-smiling_388558-125.avif"
+import img from "../../images/imagedeProfile.jpg"
 const PostsData = () => {
   return (
     <>
@@ -40,7 +40,7 @@ const PostsData = () => {
               style={{ height: "60px", width: "60px" }}
             />
             <div className="mx-2">
-              <div className="fw-bold fs-6 ">Rohit Mule</div>
+              <div className="fw-bold fs-6 ">user 100</div>
               <div className="fs-6">Frontend Developer</div>
               <div className="fs-6">
                 2d<i className="fa-solid fa-earth-americas mx-1"></i>
@@ -105,7 +105,7 @@ const PostsData = () => {
               style={{ height: "60px", width: "60px" }}
             />
             <div className="mx-2">
-              <div className="fw-bold fs-6 ">Max Rock</div>
+              <div className="fw-bold fs-6 ">user 2</div>
               <div className="fs-6">Frontend Developer</div>
               <div className="fs-6">
                 2d<i className="fa-solid fa-earth-americas mx-1"></i>

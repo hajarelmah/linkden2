@@ -4,7 +4,7 @@ import Prefer from "../../../Components/Prefer/Prefer";
 import Resume from "../../../Components/ResumeBuilder/Resume";
 
 
-// import Slider from "./Slider"
+//import Slider from "./Slider"
 
 
 
@@ -59,12 +59,15 @@ const Jobs = () => {
                   </a>
                 </Link>
                 <div>
+
+                <Link to="/CreateCV">
                   <div href="#" className="d-flex fw-bold py-1 ps-md-2" data-bs-toggle="modal"
         data-bs-target="#staticBackdrop2"
         style={{ cursor: "pointer" }}>
                     <i className="bi bi-file-earmark-fill me-2 icon12 "></i>
                     <p className="mt-1">Resume Builder</p>
                   </div>
+                  </Link>
                   <div
           className="modal fade"
           id="staticBackdrop2"

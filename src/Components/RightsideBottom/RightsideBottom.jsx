@@ -1,5 +1,5 @@
 
-import ProfileImg from "../../images/10808dc6cd9b78f0153e68aae9942abc.jpg";
+import ProfileImg from "../../images/imagedeProfile.jpg";
 import img1 from "../../images/1631328654457.jpeg"
 import { Link } from "react-router-dom"
 
