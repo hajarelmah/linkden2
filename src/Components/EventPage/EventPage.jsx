@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Event from "../Event/Event";
-import CardImg1 from "../../images/emploi-recrutement-ligne-entretien-embauche-agence-recrutement-illustration-vectorielle-gestion-ressources-humaines-concept-recherche-ligne-concept-reussite-professionnelle-concept-reseau-.avif"
-import CardImg2 from "../../images/36289607-decouverte-une-emploi-en-ligne-carriere-opportunite-emploi-recherche-recrutement-humain-ressources-emploi-entretien-en-ligne-emploi-publicite-postes-vacants-recherche-embauche-conc.jpg"
+import CardImg1 from "../../images/emploi-recrutement.avif"
+import CardImg2 from "../../images/36289607-decouverte-une-emploi-en-ligne.jpg"
 import CardImg3 from "../../images/018b46ec-cbdb-44a7-a1fd-ab2b859baae2.jpeg"
 
 const EventPage = () => {

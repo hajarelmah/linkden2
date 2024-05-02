@@ -4,7 +4,7 @@ import Prefer from "../../../Components/Prefer/Prefer";
 import Resume from "../../../Components/ResumeBuilder/Resume";
 
 
-//import Slider from "./Slider"
+//import Slider from "./Slider";
 
 
 
@@ -60,7 +60,7 @@ const Jobs = () => {
                 </Link>
                 <div>
 
-                <Link to="/CreateCV">
+                <Link to="/Resume">
                   <div href="#" className="d-flex fw-bold py-1 ps-md-2" data-bs-toggle="modal"
         data-bs-target="#staticBackdrop2"
         style={{ cursor: "pointer" }}>
