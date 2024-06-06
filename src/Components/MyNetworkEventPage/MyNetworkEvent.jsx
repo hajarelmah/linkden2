@@ -55,7 +55,7 @@ const MyNetworkEvent = () => {
               <h6>Opportunities are knocking on your door</h6>
             </div>
             <div className="d-flex justify-content-center mt-3">
-              <img
+              {/* <img
                 src="https://resonant-salmiakki-e89635.netlify.app/assets/attractive-man-smiling_388558-125-cbup7FY8.avif"
                 className="rounded me-3"
                 style={{ height: "60px", width: "60px" }}
@@ -66,10 +66,10 @@ const MyNetworkEvent = () => {
                 className="img-rounded ms-4"
                 style={{ height: "60px", width: "60px" }}
                 alt=""
-              />
+              /> */}
             </div>
             <div className=" d-flex justify-content-center mt-4">
-              <h6>Rock, aramco is hiring!</h6>
+              <h6>follow a group to grow your community !</h6>
             </div>
             <div className="d-flex justify-content-center">
               <button className="btn btn-primary px-5 my-3" id="btn-122">

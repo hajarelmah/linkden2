@@ -12,7 +12,7 @@ const Left = () => {
       try {
         const id = sessionStorage.getItem('id');
         const response = await axios.get(`http://localhost:8000/api/getuserById/${id}`);
-        setUser(response.data);
+        setUser(response.data); 
       } catch (error) {
         console.error('Error fetching user:', error);
       }
@@ -32,7 +32,7 @@ const Left = () => {
               backgroundColor: "#77dd77",
             }}>
             <div className="col-7 " style={{ height: "90px", position: "absolute", width: "100px", left: "185px", top: "90px", }}>
-              <img src={ProfileImg} alt="" className="h-100 w-100  rounded-circle" />
+              <img src={`http://localhost:8000/${user.pfp}`} alt="" className="h-100 w-100  rounded-circle" />
             </div>
           </Link>
 

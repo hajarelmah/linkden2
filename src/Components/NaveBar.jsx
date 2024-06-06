@@ -3,6 +3,7 @@ import Logo from "../icons/174857.png";
 import ProfileImg from "../images/imagedeProfile.jpg";
 import Profile from "./ProFile";
 import Business from "./Business/Business";
+import Lordicon from './Lordicon'; // Import the Lordicon component
 
 const NaveBar = () => {
   return (
@@ -20,17 +21,21 @@ const NaveBar = () => {
         <img
           src={Logo}
           alt=""
-          className="col-1 border  p-0 my-2 img-fluid"
+          className="col-1 border p-0 my-2 img-fluid"
           style={{ height: "30px", width: "30px" }}
         />
 
         <div
-          className="col-1 p-0  d-flex justify-content-center align-item-center mx-1"
+          className="col-1 p-0 d-flex justify-content-center align-item-center mx-1"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasTop"
           aria-controls="offcanvasTop"
         >
-          <i className="fa-solid fa-magnifying-glass fs-4 p-1 my-2"></i>
+          <Lordicon
+            src="https://cdn.lordicon.com/anqzffqz.json"
+            trigger="hover"
+            style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
+          />
         </div>
         <div
           className="offcanvas offcanvas-top"
@@ -49,7 +54,7 @@ const NaveBar = () => {
             />
             <button
               type="button"
-              className="fa-solid fa-x  p-3 border my-1 "
+              className="fa-solid fa-x p-3 border my-1 "
               data-bs-dismiss="offcanvas"
               aria-label="Close"
               style={{
@@ -62,7 +67,7 @@ const NaveBar = () => {
         </div>
 
         {/* mobile and tablet screen */}
-        <div className="col-1 dropdown d-lg-none  d-flex justify-content-center align-items-center">
+        <div className="col-1 dropdown d-lg-none d-flex justify-content-center align-items-center">
           <i
             className="fa-solid fa-ellipsis toggle fs-2"
             id="dropdownMenuButton"
@@ -72,16 +77,16 @@ const NaveBar = () => {
           ></i>
 
           <div
-            className=" dropdown-menu  container "
+            className="dropdown-menu container"
             aria-labelledby="dropdownMenuButton"
             style={{ borderRadius: "5px", width: "250px" }}
           >
             <div className="row" style={{ width: "240px" }}>
-              <div className="col-4 mx-1 d-flex  justify-content-center align-items-center">
+              <div className="col-4 mx-1 d-flex justify-content-center align-items-center">
                 <img
                   src={ProfileImg}
                   alt=""
-                  className=" img-fluid"
+                  className="img-fluid"
                   style={{
                     borderRadius: "50px",
                     height: "40px",
@@ -105,14 +110,16 @@ const NaveBar = () => {
 
         <NavLink
           to="/Home"
-          className="col-1 Links  p-0 d-flex flex-column text-center"
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "4px solid black" : "none",
-            };
-          }}
+          className="col-1 Links p-0 d-flex flex-column text-center"
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "4px solid black" : "none",
+          })}
         >
-          <i className="fa-solid fa-house fs-6 p-1 my-xl-0 my-2"></i>
+          <Lordicon
+            src="https://cdn.lordicon.com/epietrpn.json"
+            trigger="hover"
+            style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
+          />
           <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
             Home
           </span>
@@ -120,13 +127,15 @@ const NaveBar = () => {
         <NavLink
           to="/Network"
           className="col-1 Links p-0 d-flex flex-column text-center "
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "4px solid black" : "none",
-            };
-          }}
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "4px solid black" : "none",
+          })}
         >
-          <i className="fa-solid fa-people-line  fs-6 p-1 my-xl-0 my-2"></i>
+          <Lordicon
+            src="https://cdn.lordicon.com/xahuqqcs.json"
+            trigger="hover"
+            style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
+          />
           <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
             My Network
           </span>
@@ -134,13 +143,15 @@ const NaveBar = () => {
         <NavLink
           to="/Jobs"
           className="col-1 Links p-0 d-flex flex-column text-center "
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "4px solid black" : "none",
-            };
-          }}
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "4px solid black" : "none",
+          })}
         >
-          <i className="fa-solid fa-briefcase  fs-6 p-1 my-xl-0 my-2"></i>
+          <Lordicon
+            src="https://cdn.lordicon.com/pbihtexz.json"
+            trigger="hover"
+            style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
+          />
           <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
             Jobs
           </span>
@@ -148,13 +159,15 @@ const NaveBar = () => {
         <NavLink
           to="/Messaging"
           className="col-1 Links p-0 d-flex flex-column text-center "
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "4px solid black" : "none",
-            };
-          }}
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "4px solid black" : "none",
+          })}
         >
-          <i className="fa-solid fa-message fs-6 p-1 my-xl-0 my-2"></i>
+          <Lordicon
+            src="https://cdn.lordicon.com/kiynvdns.json"
+            trigger="hover"
+            style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
+          />
           <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
             Messaging
           </span>
@@ -163,78 +176,83 @@ const NaveBar = () => {
         <NavLink
           to="/Notifications"
           className="col-1 Links p-0 d-flex flex-column text-center "
-          style={({ isActive }) => {
-            return {
-              borderBottom: isActive ? "4px solid black" : "none",
-            };
-          }}
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "4px solid black" : "none",
+          })}
         >
-          <i className="fa-solid fa-bell fs-6 p-1 my-xl-0 my-2"></i>
-          <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
-            Notifications
-          </span>
-        </NavLink>
-        <div className=" col-1 p-0 dropdown mx-1 text-center d-lg-inline d-none">
-          <img
-            src={ProfileImg}
-            alt=""
-            className="toggle my-xl-0 my-2"
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style={{ height: "30px", width: "30px", borderRadius: "50%" }}
-          />
+          <Lordicon
+            src="https://cdn.lordicon.com/bgcyfijv.json"
+            trigger="hover"
+            stroke="bold"
+            colors="primary:#121331,secondary:#16a9c7,tertiary:#3a3347,quaternary:#ffffff"
+            style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
+            />
+            <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
+              Notifications
+            </span>
+          </NavLink>
+          <div className=" col-1 p-0 dropdown mx-1 text-center d-lg-inline d-none">
+            <img
+              src={ProfileImg}
+              alt=""
+              className="toggle my-xl-0 my-2"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style={{ height: "30px", width: "30px", borderRadius: "50%" }}
+            />
+            <div
+              className="d-xl-block d-none "
+              style={{ cursor: "pointer", color: "#00000099" }}
+            >
+              Me <i className="bi bi-caret-down-fill"></i>
+            </div>
+            <div
+              className="dropdown-menu mt-4"
+              aria-labelledby="dropdownMenuButton1"
+              style={{
+                width: "270px",
+                borderRadius: "10px",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+              }}
+            >
+              {/* component */}
+              <Profile />
+              {/* component */}
+            </div>
+          </div>
           <div
-            className="d-xl-block d-none "
-            style={{ cursor: "pointer", color: "#00000099" }}
+            className="col-1 d-lg-inline d-none"
+            style={{ borderLeft: "1px solid gray", width: "1px" }}
+          ></div>
+          <div
+            className="col-1 text-center d-lg-inline d-none p-0 cursor"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
           >
-            Me <i className="bi bi-caret-down-fill"></i>
+            <i className="fa-solid fa-list-check fs-5 mt-xl-0"></i>
+            <div className="d-xl-block d-none" style={{ color: "#00000099" }}>
+              For Business
+            </div>
           </div>
           <div
-            className="dropdown-menu mt-4"
-            aria-labelledby="dropdownMenuButton1"
-            style={{
-              width: "270px",
-              borderRadius: "10px",
-              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            }}
+            className="offcanvas offcanvas-end p-0"
+            tabIndex="-1"
+            id="offcanvasRight"
+            aria-labelledby="offcanvasRightLabel"
           >
-            {/* component */}
-            <Profile />
-            {/* component */}
+            <Business />
           </div>
+          <Link className="col-1 Links p-0 d-xl-inline d-none">
+            <div style={{ color: "#EAB458" }} className="fs-6">
+              Upgrade My Plain
+            </div>
+          </Link>
         </div>
-        <div
-          className="col-1 d-lg-inline d-none"
-          style={{ borderLeft: "1px solid gray", width: "1px" }}
-        ></div>
-        <div
-          className="col-1  text-center d-lg-inline d-none p-0 cursor"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasRight"
-          aria-controls="offcanvasRight"
-        >
-          <i className="fa-solid fa-list-check fs-5 mt-xl-0 "></i>
-          <div className="d-xl-block d-none " style={{ color: "#00000099" }}>
-            For Business
-          </div>
-        </div>
-        <div
-          class="offcanvas offcanvas-end p-0"
-          tabindex="-1"
-          id="offcanvasRight"
-          aria-labelledby="offcanvasRightLabel"
-        >
-         <Business/>
-        </div>
-        <Link className="col-1 Links  p-0   d-xl-inline d-none">
-          <div style={{ color: "#EAB458" }} className=" fs-6">
-            Upgrade My Plain
-          </div>
-        </Link>
       </div>
-    </div>
-  );
-};
-
-export default NaveBar;
+    );
+  };
+  
+  export default NaveBar;
+  

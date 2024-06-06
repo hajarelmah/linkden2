@@ -1,146 +1,205 @@
-import ProfileImg from "../../images/imagedeProfile.jpg";
-import PostImg from "../../images/teletravail_cumul_job-1200x600.jpg";
-import PostImg2 from "../../images/Travail-en-ligne-comment-rester-en-sécurité .png"
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-import img from "../../images/imagedeProfile.jpg"
 const PostsData = () => {
+  const [posts, setPosts] = useState([]);
+  const [showCommentInput, setShowCommentInput] = useState(-1);
+  const [commentContent, setCommentContent] = useState('');
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/get-posts');
+
+        const postsWithProfilePic = await Promise.all(
+          response.data.map(async (post) => {
+            const userResponse = await axios.get(`http://localhost:8000/api/getuserById/${post.post_owner_id}`);
+            const profilePic = userResponse.data.pfp;
+
+            // Fetch comments for this post
+            let comments = [];
+            try {
+              const commentsResponse = await axios.get(`http://localhost:8000/api/get-comments/${post.id}`);
+              if (commentsResponse.status === 200) {
+                comments = commentsResponse.data;
+              }
+            } catch (error) {
+              // Handle case where there are no comments for this post
+              if (error.response && error.response.status === 400) {
+                console.log('No comments found for post:', post.id);
+                comments = [];
+              } else {
+                console.error('Error fetching comments:', error);
+              }
+            }
+
+            return { ...post, profilePic, comments };
+          })
+        );
+
+        setPosts(postsWithProfilePic);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  const handleLikeUpdate = async (postId, index) => {
+    try {
+      const response = await axios.post(`http://localhost:8000/api/likeUpdate/${postId}`);
+      if (response.status === 200) {
+        const updatedPosts = [...posts];
+        updatedPosts[index].likes = response.data.likes;
+        setPosts(updatedPosts);
+        console.log('Like updated successfully:', response.data);
+      } else {
+        console.error('Error updating like:', response);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleCommentClick = (postIndex) => {
+    setShowCommentInput(postIndex);
+    setCommentContent('');
+  };
+
+  const handleCommentSubmit = async (postId) => {
+    try {
+      const userPfp = window.sessionStorage.getItem('pfp');
+      const username = window.sessionStorage.getItem('user_name');
+
+      const response = await axios.post(`http://localhost:8000/api/post-comment/${postId}`, {
+        user_pfp: userPfp,
+        username: username,
+        content: commentContent,
+      });
+
+      if (response.status === 200) {
+        console.log('Comment posted successfully:', response.data);
+
+        // Update the comments array for the corresponding post
+        const updatedPosts = [...posts];
+        const postIndex = updatedPosts.findIndex(post => post.id === postId);
+        updatedPosts[postIndex].comments.push(response.data);
+
+        setPosts(updatedPosts);
+        setShowCommentInput(-1);
+        setCommentContent('');
+      } else {
+        console.error('Error posting comment:', response);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <>
-      <div
-        className="container mt-3"
-        style={{ height: "2px", backgroundColor: "#BEBDBA" }}
-      ></div>
+      <div className="container mt-3" style={{ height: "2px", backgroundColor: "#BEBDBA" }}></div>
 
-      <div className="container sections ">
-        <div
-          className="row mt-3 pt-1 p-1 d-flex justify-content-between"
-          style={{ borderBottom: "1px solid #BEBDBA" }}
-        >
-          <div className="col-2 p-0 d-flex justify-content-center align-items-center">
-            <div className="h-75">Suggested</div>
-          </div>
-          <div className="col-md-2 col-3 d-flex gap-2 mx-3">
-            <div className="px-2  button" style={{ borderRadius: "50px" }}>
-              <i className="bi bi-three-dots fs-3"></i>
+      {posts.map((post, index) => (
+        <div key={index} className="container sections">
+          <div className="row mt-3 pt-1 p-1 d-flex justify-content-between" style={{ borderBottom: "1px solid #BEBDBA" }}>
+            <div className="col-2 p-0 d-flex justify-content-center align-items-center">
+              <div className="h-75">Suggested</div>
             </div>
-            <div
-              className=" px-2 rounded-circle button "
-              style={{ borderRadius: "50px" }}
-            >
-              <i className="bi bi-x fs-3  " style={{ cursor: "pointer" }}></i>
-            </div>
-          </div>
-        </div>
-        <div className="row mt-3  d-flex justify-content-between">
-          <div className="col-md-6 col-8 d-flex p-0 align-items-center">
-            <img
-              src={ProfileImg}
-              alt=""
-              className=" rounded-circle"
-              style={{ height: "60px", width: "60px" }}
-            />
-            <div className="mx-2">
-              <div className="fw-bold fs-6 ">user 100</div>
-              <div className="fs-6">Frontend Developer</div>
-              <div className="fs-6">
-                2d<i className="fa-solid fa-earth-americas mx-1"></i>
+            <div className="col-md-2 col-3 d-flex gap-2 mx-3">
+              <div className="px-2  button" style={{ borderRadius: "50px" }}>
+                <i className="bi bi-three-dots fs-3"></i>
+              </div>
+              <div className="px-2 rounded-circle button" style={{ borderRadius: "50px" }}>
+                <i className="bi bi-x fs-3" style={{ cursor: "pointer" }}></i>
               </div>
             </div>
           </div>
-          <div className="col-3 d-flex align-items-center justify-content-end p-1">
-            <div
-              className="text-center p-2 fs-5 fw-bold Blue rounded"
-              style={{ color: "#0A66C2",cursor:"pointer" }}
-            >
-               Follow
+          <div className="row mt-3 d-flex justify-content-between">
+            <div className="col-md-6 col-8 d-flex p-0 align-items-center">
+              <img src={`http://localhost:8000/` + post.profilePic} alt="" className="rounded-circle" style={{ height: "60px", width: "60px" }} />
+              <div className="mx-2">
+                <div className="fw-bold fs-6 ">{post.username}</div>
+                <div className="fs-6">
+                  {post.date}<i className="fa-solid fa-earth-americas mx-1"></i>
+                </div>
+                <div className="fs-6">{post.comment}</div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="row mt-3 ">
-          <div className="col-12 p-0">
-            <img src={PostImg} alt="" className="img-fluid rounded-3" />
-          </div>
-        </div>
-        <div className="row mt-2" style={{height:"2px",backgroundColor:"#BEBDBA"}}>
-
-        </div>
-        <div className="row p-2  ">
-          <div className="col-3 button p-1  text-center rounded-3 cursor" >
-            <i className="bi bi-hand-thumbs-up mx-1 fs-5 "></i>Like
-          </div>
-          <div className="col-3 button p-1 text-center rounded-3 cursor">
-          <i className="bi bi-chat mx-1 fs-5"></i>Comment</div>
-          <div className="col-3 button p-1 text-center rounded-3 cursor">
-          <i className="bi bi-arrow-repeat mx-1 fs-5"></i> Repost</div>
-          <div className="col-3 p-1 button text-center rounded-3 cursor">
-          <i className="bi bi-send mx-1 fs-5"></i>Send</div>
-        </div>
-      </div>
-      <div className="container sections ">
-        <div
-          className="row mt-3 pt-1 p-1 d-flex justify-content-between"
-          style={{ borderBottom: "1px solid #BEBDBA" }}
-        >
-          <div className="col-2 p-0 d-flex justify-content-center align-items-center">
-            <div className="h-75">Suggested</div>
-          </div>
-          <div className="col-md-2 col-3 d-flex gap-2 mx-3">
-            <div className="px-2  button" style={{ borderRadius: "50px" }}>
-              <i className="bi bi-three-dots fs-3"></i>
-            </div>
-            <div
-              className=" px-2 rounded-circle button "
-              style={{ borderRadius: "50px" }}
-            >
-              <i className="bi bi-x fs-3  " style={{ cursor: "pointer" }}></i>
-            </div>
-          </div>
-        </div>
-        <div className="row mt-3  d-flex justify-content-between">
-          <div className="col-md-6 col-8 d-flex p-0 align-items-center">
-            <img
-              src={img}
-              alt=""
-              className=" rounded-circle"
-              style={{ height: "60px", width: "60px" }}
-            />
-            <div className="mx-2">
-              <div className="fw-bold fs-6 ">user 2</div>
-              <div className="fs-6">Frontend Developer</div>
-              <div className="fs-6">
-                2d<i className="fa-solid fa-earth-americas mx-1"></i>
+            <div className="col-3 d-flex align-items-center justify-content-end p-1">
+              <div className="text-center p-2 fs-5 fw-bold Blue rounded" style={{ color: "#0A66C2", cursor: "pointer" }}>
+                Follow
               </div>
             </div>
           </div>
-          <div className="col-3 d-flex align-items-center justify-content-end p-1">
+          {post.image && (
+            <div className="row mt-3">
+              <div className="col-12 p-0">
+                <img src={'http://localhost:8000' + post.image} alt="img" className="img-fluid rounded-3" />
+              </div>
+            </div>
+          )}
+          <div className="row mt-2" style={{ height: "2px", backgroundColor: "#BEBDBA" }}></div>
+          <div className="row p-2">
+            <div className="col-3 button p-1 text-center rounded-3 cursor" onClick={() => handleLikeUpdate(post.id, index)}>
+              <i className="bi bi-hand-thumbs-up mx-1 fs-5"></i>Like ({post.likes})
+            </div>
             <div
-              className="text-center p-2 fs-5 fw-bold Blue rounded"
-              style={{ color: "#0A66C2",cursor:"pointer" }}
+              className="col-3 button p-1 text-center rounded-3 cursor"
+              onClick={() => handleCommentClick(index)}
             >
-               Follow
+              <i className="bi bi-chat mx-1 fs-5"></i>Comment
+            </div>
+            <div className="col-3 button p-1 text-center rounded-3 cursor">
+              <i className="bi bi-arrow-repeat mx-1 fs-5"></i>Repost
+            </div>
+            <div className="col-3 p-1 button text-center rounded-3 cursor">
+              <i className="bi bi-send mx-1 fs-5"></i>Send
             </div>
           </div>
-        </div>
-        <div className="row mt-3 ">
-          <div className="col-12 p-0">
-            <img src={PostImg2} alt="" className="img-fluid rounded-3" />
-          </div>
-        </div>
-        <div className="row mt-2" style={{height:"2px",backgroundColor:"#BEBDBA"}}>
 
+          {/* Display existing comments */}
+          {post.comments.length > 0 && (
+            <div className="row mt-2">
+              <div className="col-12">
+                <h5>Comments</h5>
+                {post.comments.map((comment, commentIndex) => (
+                  <div key={commentIndex} className="d-flex align-items-center my-2">
+                    <img src={`http://localhost:8000/${comment.user_pfp}`} alt="" className="rounded-circle" style={{ height: "30px", width: "30px" }} />
+                    <div className="ms-2">
+                      <div className="fw-bold">{comment.username}</div>
+                      <div>{comment.content}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {showCommentInput === index && (
+            <div className="row my-2">
+              <div className="col-12">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Write a comment..."
+                    value={commentContent}
+                    onChange={(e) => setCommentContent(e.target.value)}
+                  />
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => handleCommentSubmit(post.id)}
+                  >
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-        <div className="row p-2  ">
-          <div className="col-3 button p-1  text-center rounded-3 cursor" >
-            <i className="bi bi-hand-thumbs-up mx-1 fs-md-3 fs-5 "></i>Like
-          </div>
-          <div className="col-3 button p-1 text-center rounded-3 cursor">
-          <i className="bi bi-chat mx-1 fs-md-3 fs-5"></i>Comment</div>
-          <div className="col-3 button p-1 text-center rounded-3 cursor">
-          <i className="bi bi-arrow-repeat mx-1 fs-md-3 fs-5"></i> Repost</div>
-          <div className="col-3 p-1 button text-center rounded-3 cursor">
-          <i className="bi bi-send mx-1 fs-md-3 fs-5"></i>Send</div>
-        </div>
-      </div>
+      ))}
     </>
   );
 };

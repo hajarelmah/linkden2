@@ -30,8 +30,12 @@ const RootLayout = () => {
         <div className="w-100 h-100">
           <NaveBar />
           <FixMessaing/>
-
-          <section className="d-flex w-100" style={{backgroundColor:"#F4F2EE"}}>
+{/* ------------------------------------------HAJAR ----------------------------------------- 
+this is where i centred resume this is basically rootLayout of ur app (how its devided to sections) 
+            so i centred anything thats under the header i added justfy.... 
+        if any page get auto centred in the future consider making this css rule apply only to resume page */}
+        
+          <section className="d-flex w-100" style={{ backgroundColor: "#F4F2EE", justifyContent: "center" }}>
             <Outlet />
           </section>
         </div>

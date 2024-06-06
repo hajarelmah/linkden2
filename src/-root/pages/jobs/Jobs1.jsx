@@ -3,17 +3,11 @@ import "./Jobs1.css";
 import Prefer from "../../../Components/Prefer/Prefer";
 import Resume from "../../../Components/ResumeBuilder/Resume";
 
-
 //import Slider from "./Slider";
-
-
-
-
-
 
 const Jobs = () => {
   return (
-    <div className="container mt-3 mb-2">
+    <div className="container mt-3 mb-2 ">
       <div className="row " >
         {/* left sideBar */}
         <div className="col-lg-3 " >
@@ -28,13 +22,13 @@ const Jobs = () => {
                 </Link>
                 <div>
                   <div href="#" className="d-flex fw-bold py-1 ps-md-2" data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop1"
+        // data-bs-target="#staticBackdrop1"
         style={{ cursor: "pointer" }}>
                     <i className="bi bi-list-ul me-2 icon12"></i>
                     <p className="mt-1">Preferences</p>
                   </div>
                   <div
-          className="modal fade"
+          className="modal "
           id="staticBackdrop1"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -61,15 +55,15 @@ const Jobs = () => {
                 <div>
 
                 <Link to="/Resume">
-                  <div href="#" className="d-flex fw-bold py-1 ps-md-2" data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop2"
+                  <div href="#" className="d-flex fw-bold py-1 ps-md-2 r	" data-bs-toggle="modal"
+        // data-bs-target="#staticBackdrop2"
         style={{ cursor: "pointer" }}>
                     <i className="bi bi-file-earmark-fill me-2 icon12 "></i>
                     <p className="mt-1">Resume Builder</p>
                   </div>
                   </Link>
                   <div
-          className="modal fade"
+          className="modal "
           id="staticBackdrop2"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -78,7 +72,8 @@ const Jobs = () => {
           aria-hidden="true"
           
         >
-         <Resume/>
+          {/* <p>aa</p>
+         <Resume/> */}
         </div>
                 </div>
                 <div>

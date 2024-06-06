@@ -28,11 +28,13 @@ const Profile = () => {
           <>
             <div className="col-12 d-flex p-0 gap-2">
               <div className="w-25 p-1">
-                <img
-                  src={ProfileImg}
-                  alt=""
-                  className="h-50 w-100 rounded-circle"
-                />
+              <img
+  src={`http://localhost:8000/${user.pfp}`}
+  alt=""
+  className="w-100 rounded-circle" // Remove the h-50 class
+  style={{ height: "50px" }} // Set the height to your desired value, e.g., 150px
+/>
+
               </div>
               <div className="w-75 text-start fs-6">
                 <div className="fw-bold">{user.user_name}</div>

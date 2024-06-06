@@ -2,14 +2,17 @@ import HomeRightSide from "../../../Components/HomeRightSide/HomeRightSide"
 import Left from "../../../Components/LeftSideTopHome/LeftTop"
 import Posts from "../../../Components/Posts/Posts"
 import PostsData from "../../../Components/PostsData/PostsData"
-
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
+  const nav = useNavigate();
   const isLoggedIn = sessionStorage.getItem('email'); // Check if the user is logged in
 
   if (!isLoggedIn) {
     // If user is not logged in, redirect to login page
-    return <Redirect to="/login" />;
+    // return <Redirect to="/login" />;
+    // navigator("/login");
+    nav("/login");
   }
 
   // If user is logged in, render the Home page

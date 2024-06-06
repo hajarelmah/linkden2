@@ -1,9 +1,10 @@
 body{
     background-color:#f3f2f0;
+    padding-bottom: 40px;
 }
 #form-main{
     background-color:white; 
-    height: 420px;
+    min-height: 420px;
     width: 500px;
     /* display: flex;
     justify-content: center;

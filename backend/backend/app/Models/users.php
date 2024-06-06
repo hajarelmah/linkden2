@@ -16,8 +16,10 @@ class users extends Model
         'full_name',
         'user_name',
         'gender',
+        'pfp',
         'bio',
         'date_of_birth',
+        'name'
     ];
     public function getJWTCustomClaims()
     {

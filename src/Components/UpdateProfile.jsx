@@ -1,86 +1,226 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+const FormField = ({ label, type, value, onChange, placeholder, accept }) => {
+  return (
+    <div className="mb-3">
+      <label htmlFor={label} className="form-label">{label}</label>
+      {type === "file" ? (
+        <input
+          type={type}
+          id={label}
+          className="form-control"
+          onChange={onChange}
+          accept={accept}
+        />
+      ) : (
+        <input
+          type={type}
+          id={label}
+          className="form-control"
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      )}
+    </div>
+  );
+};
 
 const UpdateProfile = () => {
-  const [name, setName] = useState('username');
-  const [bio, setBio] = useState('bio');
-  const [newName, setNewName] = useState('');
-  const [newBio, setNewBio] = useState('');
+  const [username, setUsername] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [bio, setBio] = useState('');
+  const [gender, setGender] = useState('');
+  const [profilePicture, setProfilePicture] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [address, setAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [previewImage, setPreviewImage] = useState(null);
 
-
-//   try {
-//     const response = await axios.post("http://localhost:8000/api/signup", {
-//       email,
-//       password,
-//     });
-
-//     // Handle successful sign up (e.g., redirect user to another page)
-//   } catch (error) {
-//     setError(error.message);
-//   }
-// };
-
-  const handleNameChange = (e) => {
-    setNewName(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'username':
+        setUsername(value);
+        break;
+      case 'fullName':
+        setFullName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      case 'bio':
+        setBio(value);
+        break;
+      case 'gender':
+        setGender(value);
+        break;
+      case 'city':
+        setCity(value);
+        break;
+      case 'country':
+        setCountry(value);
+        break;
+      case 'address':
+        setAddress(value);
+        break;
+      case 'phoneNumber':
+        setPhoneNumber(value);
+        break;
+      default:
+        console.error(`Unknown field: ${name}`);
+    }
   };
 
-  const handleBioChange = (e) => {
-    setNewBio(e.target.value);
+  const handleProfilePictureChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setProfilePicture(reader.result);
+      setPreviewImage(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-        name: newName,
-        bio: newBio,
-      };
-      axios.post('http://localhost:8000/api/UpdateProfile', data)
-      .then(response => {
-        // Handle successful response
-        console.log('Response:', response.data);
-        // Optionally, you can update the UI to reflect the changes
-      })
-      .catch(error => {
-        // Handle error
-        console.error('Error:', error);
-      });
-    // Here you can send the updated name and bio to your backend API
-    //console.log('Updated Name:', newName);
-    //console.log('Updated Bio:', newBio);
-    // Reset the input fields
-    setNewName('');
-    setNewBio('');
+      username,
+      fullName,
+      email,
+      password,
+      bio,
+      gender,
+      profilePicture,
+      city,
+      country,
+      address,
+      phoneNumber,
+    };
+    // Send data to the backend
   };
 
   return (
-    <div className="container-fluid d-flex justify-content-center">
-      <div className="row d-flex flex-column" style={{ width: "260px" }}>
-        <div className="col-12 d-flex p-0 gap-2">
-          {/* Display the input fields for name and bio */}
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Name"
-            value={newName}
-            onChange={handleNameChange}
-          />
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Bio"
-            value={newBio}
-            onChange={handleBioChange}
-          />
-        </div>
-        <div className="col-12">
-          {/* Display the button to submit the updated profile */}
-          <button onClick={handleSubmit} className="btn btn-primary mt-2" style={{ borderRadius: "20px" }}>
-            Update Profile
-          </button>
-          <Link to="/EditProfile" className="btn btn-secondary mt-2" style={{ borderRadius: "20px" }}>
-            Cancel
-          </Link>
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow p-4">
+            <h4 className="mb-4">Update Profile</h4>
+            <form onSubmit={handleSubmit}>
+              <FormField
+                label="Profile Picture"
+                type="file"
+                accept="image/*"
+                onChange={handleProfilePictureChange}
+              />
+             {previewImage && (
+             <img
+               src={previewImage}
+               alt="Preview"
+               className="mb-3"
+               style={{ maxWidth: "200px", maxHeight: "200px" }} // Adjust the dimensions as needed
+         />
+             )}
+
+              <FormField
+                label="Username"
+                type="text"
+                value={username}
+                onChange={handleChange}
+                placeholder="Username"
+                name="username"
+              />
+              <FormField
+                label="Full Name"
+                type="text"
+                value={fullName}
+                onChange={handleChange}
+                placeholder="Full Name"
+                name="fullName"
+              />
+              <FormField
+                label="Email"
+                type="email"
+                value={email}
+                onChange={handleChange}
+                placeholder="Email"
+                name="email"
+              />
+              <FormField
+                label="Password"
+                type="password"
+                value={password}
+                onChange={handleChange}
+                placeholder="Password"
+                name="password"
+              />
+              <FormField
+                label="Bio"
+                type="textarea"
+                value={bio}
+                onChange={handleChange}
+                placeholder="Bio"
+                name="bio"
+              />
+              <FormField
+                label="Gender"
+                type="select"
+                value={gender}
+                onChange={handleChange}
+                name="gender"
+              >
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </FormField>
+              <FormField
+                label="City"
+                type="text"
+                value={city}
+                onChange={handleChange}
+                placeholder="City"
+                name="city"
+              />
+              <FormField
+                label="Country"
+                type="text"
+                value={country}
+                onChange={handleChange}
+                placeholder="Country"
+                name="country"
+              />
+              <FormField
+                label="Address"
+                type="text"
+                value={address}
+                onChange={handleChange}
+                placeholder="Address"
+                name="address"
+              />
+              <FormField
+                label="Phone Number"
+                type="text"
+                value={phoneNumber}
+                onChange={handleChange}
+                placeholder="Phone Number"
+                name="phoneNumber"
+              />
+              <button type="submit" className="btn btn-primary w-100 mb-3">Update Profile</button>
+              <Link to="/EditProfile" className="btn btn-secondary w-100">Cancel</Link>
+            </form>
+          </div>
         </div>
       </div>
     </div>

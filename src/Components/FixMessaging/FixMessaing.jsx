@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import ProfileImg from "../../images/ProfileImage.jpg";
+import ProfileImg from "../../images/imagedeProfile.jpg";
 import img from "../../images/53-533248_cartoon-person-without-face-person-cartoon-hd-png.png";
 const FixMessaing = () => {
   const [arrow,setArrow]=useState(true)
@@ -204,8 +204,7 @@ const FixMessaing = () => {
                     </div>
                     <div>
                       <div className="" style={{fontSize:"20px",fontWeight:"500"}}>Linkedin Member</div>
-                      <div className="" style={{fontSize:"15px"}}> Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Sapiente autem, nam, debitis</div>
+                      <div className="" style={{fontSize:"15px"}}> hey how are you</div>
                     </div>
                     <div>13jan</div>
                   </div>
@@ -243,8 +242,7 @@ const FixMessaing = () => {
                     </div>
                     <div>
                       <div className="" style={{fontSize:"20px",fontWeight:"500"}}>Linkedin Member</div>
-                      <div className="" style={{fontSize:"15px"}}> Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Sapiente autem, nam, debitis</div>
+                      <div className="" style={{fontSize:"15px"}}> hey how are you?</div>
                     </div>
                     <div>13jan</div>
                   </div>

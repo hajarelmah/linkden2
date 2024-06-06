@@ -24,6 +24,11 @@ import PrivateRoute from "./Components/PrivateRoute";
 import UpdateProfile from "./Components/UpdateProfile";
 import CreateCV from "./Components/CreateCV";
 import Resume from "./Components/ResumeBuilder/Resume";
+import Test from "./Components/ResumeBuilder/test";
+//import Home from "./Components/Dashboard/pages/home/Home";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Datatable from "./Components/Dashboard/Datatable";
+import Media from "./Components/Media/Media";
 
 
 const App = () => {
@@ -59,6 +64,11 @@ const App = () => {
           <Route path="/Page"  element={<Pages/>}/>
           <Route path="/Resume"  element={<Resume/>}/>
           <Route path="/CreateCV"  element={<CreateCV/>}/>
+          <Route path="/test"  element={<Test/>}/>
+          <Route path="/Dashboard"  element={<Datatable/>}/>
+          {/* <Route path="/Media"  element={<Media/>}/> */}
+
+
         </Route>
 
 

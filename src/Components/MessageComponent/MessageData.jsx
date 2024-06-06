@@ -373,21 +373,21 @@ const MessageData = () => {
             >
               <div className="mt-2 d-flex gap-2">
                 <div className="d-flex align-items-center p-1">
-                  <img
+                  {/* <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6hsv0ZBAHf752_NiIQBj6yzWtxP2lTJZNfA&usqp=CAU"
                     alt=""
                     style={{ height: "60px", width: "60px" }}
-                  />
+                  /> */}
                 </div>
                 <div
                   className=""
                   style={{ fontSize: "20px", fontWeight: "500" }}
                 >
-                  Group Education
-                  <div className="mt-2 fw-normal fs-6">Hi Sarvesh</div>
+                  {/* Group Education */}
+                  {/* <div className="mt-2 fw-normal fs-6">Hi Sarvesh</div> */}
                 </div>
               </div>
-              <div className="p-3">
+              {/* <div className="p-3">
                 <div className="mt-3">
                   Are you enthusiastic about the prospect of pursuing your
                   education in the UK/Ireland?
@@ -405,7 +405,7 @@ const MessageData = () => {
                   the finest with Fateh.
                 </div>
                 <div className="mt-3">Enroll now for the Jan 2024 intake!</div>
-              </div>
+              </div> */}
             </div>
             <div
               className="tab-pane fade p-2"

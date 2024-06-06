@@ -8,47 +8,70 @@ const ResumeUploadForm = () => {
     setFile(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // If file is selected, you can handle the file here
-    // For example, you can upload the file to the server
+    if (!file) {
+      alert("Please select a file.");
+      return;
+    }
 
-    // Redirect to CreateCV page
-    window.location.href = "/CreateCV";
+    try {
+      const formData = new FormData();
+      formData.append("resume", file);
+
+      const response = await fetch("http://localhost:8000/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("File uploaded successfully!");
+      } else {
+        alert("Failed to upload file.");
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert("An error occurred while uploading the file.");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h4>Select a resume</h4>
-        <p className="fs-6 fw-normal">
-          Get insights for formatting issues, keywords, and more.
-        </p>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow p-4">
+            <h4 className="mb-4">Select a resume</h4>
+            <p className="fs-6 fw-normal">
+              upload your resume or create a new one :
+            </p>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="resumeFile" className="form-label">
+                  Upload Resume:
+                </label>
+                <input
+                  type="file"
+                  id="resume"
+                  name="resume"
+                  accept=".docx,.pdf"
+                  className="form-control"
+                  onChange={handleFileChange}
+                />
+              </div>
+              <div className="d-grid gap-2">
+                <button type="submit" className="btn btn-primary">
+                  Upload the CV
+                </button>
+                <Link to="/CreateCV" className="btn btn-outline-primary">
+                  Create CV
+                </Link>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div>
-        <label htmlFor="resumeFile" className="form-label">
-          Upload Resume:
-        </label>
-        <input
-          type="file"
-          id="resumeFile"
-          accept=".docx,.pdf"
-          className="form-control"
-          onChange={handleFileChange}
-        />
-      </div>
-      <div>
-        <button type="submit" className="btn btn-primary mt-3">
-          Upload & Create CV
-        </button>
-      </div>
-      <div>
-        <Link to="/CreateCV" className="btn btn-primary mt-3">
-          Create CV
-        </Link>
-      </div>
-    </form>
+    </div>
   );
 };
 

@@ -19,18 +19,26 @@ const SigninForm = () => {
       });
 
       // Handle successful login (e.g., redirect user to another page)
-      if (response.status === 200) {
+      if (response.status === 200 ) {
         console.log(response.data.user.id);
         sessionStorage.setItem('id',response.data.user.id);
         sessionStorage.setItem('user_name',response.data.user.user_name);
         sessionStorage.setItem('email',response.data.user.email);
         sessionStorage.setItem('bio',response.data.user.bio);
         sessionStorage.setItem('full_name',response.data.user.full_name);
+        sessionStorage.setItem('role',response.data.user.role);
+        sessionStorage.setItem('pfp',response.data.user.pfp);
 
-        Navigate("/Home");
+        if(response.data.user.role=='admin'){
+          Navigate("/dashboard");
+        }
+        else{
+          Navigate("/Home");
+        }
+        
 
         // Redirect to Home page
-       window.location.href = "/Home";
+      //  window.location.href = "/Home";
 
       }
     } catch (error) {

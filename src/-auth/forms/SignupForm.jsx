@@ -1,33 +1,43 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignupForm.css";
 import axios from "axios";
 
 const SignupForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [fullname, setFullname] = useState("");
+  const [user_name, setUsername] = useState("");
+  const [full_name, setFullname] = useState("");
   const [bio, setBio] = useState("");
   const [gender, setGender] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [date_of_birth, setDateOfBirth] = useState("");
   const [error, setError] = useState(null);
+  const [pfp, setPfp] = useState(null);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      const response = await axios.post("http://localhost:8000/api/signup", {
-        email,
-        password,
-        fullname,
-        username,
-        gender,
-        bio,
-        dateOfBirth
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("full_name", full_name);
+      formData.append("user_name", user_name);
+      formData.append("gender", gender);
+      formData.append("bio", bio);
+      formData.append("date_of_birth", date_of_birth);
+      formData.append("pfp", pfp);
+
+      const response = await axios.post("http://localhost:8000/api/signup", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
       });
 
-      // Handle successful sign up (e.g., redirect user to another page)
+      // Redirect to the sign-in page upon successful sign-up
+      navigate("/"); // Use the relative path to the sign-in page
     } catch (error) {
       setError(error.message);
     }
@@ -60,6 +70,15 @@ const SignupForm = () => {
               />
             </div>
             <div className="mb-3">
+              <label className="form-label">Profile Picture</label>
+              <input
+                type="file"
+                className="form-control"
+                accept="image/*"
+                onChange={(e) => setPfp(e.target.files[0])}
+              />
+            </div>
+            <div className="mb-3">
               <label className="form-label">Your Password (6+ Character)</label>
               <input
                 type="password"
@@ -75,7 +94,7 @@ const SignupForm = () => {
                 <input
                   type="text"
                   className="form-control"
-                  value={username}
+                  value={user_name}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
@@ -84,7 +103,7 @@ const SignupForm = () => {
                 <input
                   type="text"
                   className="form-control"
-                  value={fullname}
+                  value={full_name}
                   onChange={(e) => setFullname(e.target.value)}
                 />
               </div>
@@ -116,7 +135,7 @@ const SignupForm = () => {
                 <input
                   type="date"
                   className="form-control"
-                  value={dateOfBirth}
+                  value={date_of_birth}
                   onChange={(e) => setDateOfBirth(e.target.value)}
                 />
               </div>
