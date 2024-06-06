@@ -59,6 +59,8 @@ const App = () => {
           <Route path="/Notifications" element={<Notifications/>}/>
           <Route path="/MynetworkEvent" element={<MyNetworkEvent/>}/>
           <Route path="/Messaging"  element={<Messaging/>}/>
+          <Route path="/Messaging/:userId" element={<Messaging />} />
+
           <Route path="/MyJob"      element={<NewJobs/>}/>
           <Route path="/Interview"  element={<Interview/>}/>
           <Route path="/Page"  element={<Pages/>}/>

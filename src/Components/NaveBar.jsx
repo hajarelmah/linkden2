@@ -1,9 +1,41 @@
-import { Link, NavLink } from "react-router-dom";
-import Logo from "../icons/174857.png";
-import ProfileImg from "../images/imagedeProfile.jpg";
+import { NavLink, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Lordicon from './Lordicon'; // Import the Lordicon component
+import ProfileImg from "../images/imagedeProfile.jpg"; // Assuming you have the profile image imported here
+import Logo from "../icons/174857.png"; // Assuming you have the logo imported here
 import Profile from "./ProFile";
 import Business from "./Business/Business";
-import Lordicon from './Lordicon'; // Import the Lordicon component
+
+const MessagingNavLink = () => {
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    // Fetch user ID here or use your existing method to get the user's ID
+    const userId = sessionStorage.getItem('id');
+    if (userId) {
+      setUserId(userId);
+    }
+  }, []);
+
+  return (
+    <NavLink
+      to={userId ? `http://127.0.0.1:8000/chatify/${userId}` : "/Messaging"}
+      className="col-1 Links p-0 d-flex flex-column text-center "
+      style={({ isActive }) => ({
+        borderBottom: isActive ? "4px solid black" : "none",
+      })}
+    >
+      <Lordicon
+        src="https://cdn.lordicon.com/kiynvdns.json"
+        trigger="hover"
+        style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
+      />
+      <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
+        Messaging
+      </span>
+    </NavLink>
+  );
+}
 
 const NaveBar = () => {
   return (
@@ -156,22 +188,8 @@ const NaveBar = () => {
             Jobs
           </span>
         </NavLink>
-        <NavLink
-          to="/Messaging"
-          className="col-1 Links p-0 d-flex flex-column text-center "
-          style={({ isActive }) => ({
-            borderBottom: isActive ? "4px solid black" : "none",
-          })}
-        >
-          <Lordicon
-            src="https://cdn.lordicon.com/kiynvdns.json"
-            trigger="hover"
-            style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
-          />
-          <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
-            Messaging
-          </span>
-        </NavLink>
+
+        <MessagingNavLink />
 
         <NavLink
           to="/Notifications"
@@ -246,7 +264,7 @@ const NaveBar = () => {
           </div>
           <Link className="col-1 Links p-0 d-xl-inline d-none">
             <div style={{ color: "#EAB458" }} className="fs-6">
-              Upgrade My Plain
+              Upgrade My Plan
             </div>
           </Link>
         </div>
@@ -255,4 +273,3 @@ const NaveBar = () => {
   };
   
   export default NaveBar;
-  
