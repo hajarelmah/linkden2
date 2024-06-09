@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import NaveBar from "../Components/NaveBar";
 import Loading from "../Components/Loader";
 import { useEffect, useState } from "react";
-import FixMessaing from "../Components/FixMessaging/FixMessaing";
+// import FixMessaing from "../Components/FixMessaging/FixMessaing";
 
 
 
@@ -29,7 +29,7 @@ const RootLayout = () => {
       ) : (
         <div className="w-100 h-100">
           <NaveBar />
-          <FixMessaing/>
+          {/* <FixMessaing/> */}
 {/* ------------------------------------------HAJAR ----------------------------------------- 
 this is where i centred resume this is basically rootLayout of ur app (how its devided to sections) 
             so i centred anything thats under the header i added justfy.... 

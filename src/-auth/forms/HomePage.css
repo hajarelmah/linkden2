@@ -1,0 +1,87 @@
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+  
+.position-absolute {
+    position: absolute;
+}
+  
+.top-0 {
+    top: 0;
+}
+  
+.end-0 {
+    right: 0;
+}
+  
+.mt-3 {
+    margin-top: 1rem;
+}
+  
+.me-4 {
+    margin-right: 1.5rem;
+}
+  
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+  
+.full-size {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers the container */
+}
+  
+.w-100 {
+    width: 100%;
+}
+  
+.max-w-1200 {
+    max-width: 1200px;
+}
+  
+.py-3 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+  
+.px-4 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+  
+.rounded {
+    border-radius: 0.25rem;
+}
+  
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mb-md-0 {
+    margin-bottom: 0;
+  }
+  .logo {
+    width: 200px; /* Adjust the width as needed */
+    height: auto;
+  }
+  .custom-btn {
+    border-radius: 20px; /* Bords arrondis */
+    font-weight: bold; /* Texte en gras */
+    padding: 10px 20px; /* Padding */
+  }
+  
+.custom-btn:hover {
+    background-color: hwb(211 3% 14%); /* Fond bleu au survol */
+    color: white; /* Texte blanc au survol */
+  }
+  
+  /* Other existing CSS styles */
+    

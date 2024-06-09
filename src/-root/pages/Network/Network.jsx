@@ -133,7 +133,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Rohit Roy</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -153,7 +153,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Saige Fuentes</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -173,7 +173,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Aaron Abbey</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -193,7 +193,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Amira Trevino</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -213,7 +213,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Brooklyn Roach</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -233,7 +233,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Lacey Franklin</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -253,7 +253,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Lila Pacheco</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -273,7 +273,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Silas Rollins</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -293,7 +293,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Kamari Choi</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -313,7 +313,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Makenna Moody</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -333,7 +333,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Dior Holt</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -353,7 +353,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Elsie Leon</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -373,7 +373,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Malik Levy</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -393,7 +393,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Liam Good</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -413,7 +413,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Gwen Green</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -433,7 +433,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Ricky Riley</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -453,7 +453,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Maddison Barron</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -473,7 +473,7 @@ const Network = () => {
         <div className="d-flex justify-content-center">
         <h5 className="card-title">Onyx Archer</h5>
         </div>
-        <p className="card-text ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt nam nostrum quisquam unde veniam error totam atque maiores impedit ex?</p>
+        <p className="card-text "></p>
         <div className="d-flex justify-content-center">
         <button className="btn btn-primary px-5" id="btn-122">Connect</button>
         </div>
@@ -483,25 +483,12 @@ const Network = () => {
    <div className="d-flex justify-content-center">
     <button className="btn btn btn-outline-primary fw-bold px-5  m-4" id="btn-122">Show More</button>
    </div>
-</div>
-
-           
-
-                    </div>
-             </>  
-            
-            )
-
-            }
-
-
+</div> </div>
+             </>
+            )}
             </div>
           </div>
-        </div>
-
-
-      </>
-  )
-}
+        </div> </>)
+        }
 
 export default Network

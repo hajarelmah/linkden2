@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 //import { AuthWrapper } from ".auth/AuthWrapper";
 import SigninForm from "./-auth/forms/SigninForm";
 import AuthLayout from "./-auth/AuthLayout";
+import HomePage from "./-auth/forms/HomePage";
 import ForgotPassword from "./-auth/forms/ForgotPassword";
 import SignupForm from "./-auth/forms/SignupForm";
 import RootLayout from "./-root/RootLayout";
@@ -40,8 +41,10 @@ const App = () => {
       <Routes>
         {/* public routes */}
         <Route   element={<AuthLayout />}>
-          <Route  index element={<SigninForm />} />
+          {/* <Route  index element={<SigninForm />} /> */}
           <Route path="/Sign-up" element={<SignupForm/>}/>
+          <Route  path="/Signin" element={<SigninForm />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
         </Route>
 

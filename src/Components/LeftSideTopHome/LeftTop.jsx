@@ -29,7 +29,8 @@ const Left = () => {
             style={{
               borderTopRightRadius: "9px",
               borderTopLeftRadius: "9px",
-              backgroundColor: "#77dd77",
+              // backgroundColor: "#5ABBF0",
+              background: "linear-gradient(135deg, #00b5d1, #0073b1)", // Gradient background
             }}>
             <div className="col-7 " style={{ height: "90px", position: "absolute", width: "100px", left: "185px", top: "90px", }}>
               <img src={`http://localhost:8000/${user.pfp}`} alt="" className="h-100 w-100  rounded-circle" />

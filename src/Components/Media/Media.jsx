@@ -10,11 +10,10 @@ const Media = () => {
   const [filePreview, setFilePreview] = useState(null);
   const fileInputRef = useRef(null);
   const dateInputRef = useRef(null);
-
   // Fetch CSRF token from meta tag
  
-
   useEffect(() => {
+
     const fetchUser = async () => {
       try {
         const id = sessionStorage.getItem('id');
@@ -47,26 +46,30 @@ const Media = () => {
 
   const handleSubmit = async () => {
     const id = sessionStorage.getItem('id');
-
+  
     const formData = new FormData();
     formData.append('post_owner_id', id);
-
     formData.append('username', user.full_name);
     formData.append('comment', document.getElementById("floatingTextarea2").value);
     formData.append('date', selectedDate);
+  
     if (file) {
       formData.append('image', file); // Append the file to the form data
     }
-
+  
     try {
       const response = await axios.post('http://localhost:8000/api/post', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-
         },
       });
-
+  
       if (response.status === 200) {
+        let old = sessionStorage.getItem('post_flag') === 'true'; // Interpret as boolean
+        console.log("old", old);
+        
+        sessionStorage.setItem('post_flag', !old); // Update sessionStorage based on old value
+  
         console.log('Post created successfully:', response.data);
         alert('Post created successfully');
       } else {
@@ -76,6 +79,7 @@ const Media = () => {
       console.error('Error:', error);
     }
   };
+  
 
   return (
     <>
@@ -89,8 +93,8 @@ const Media = () => {
                 <div className="modal-header">
                   <div className="button d-flex p-2 cursor" style={{ borderRadius: "20px" }}>
                     <img
-                      src={ProfileImg}
-                      alt=""
+                      src={`http://localhost:8000/${user.pfp}`}
+                      alt="Profile"
                       className="rounded-circle"
                       style={{ height: "50px", width: "50px" }}
                     />

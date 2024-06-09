@@ -1,26 +1,16 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import Lordicon from './Lordicon'; // Import the Lordicon component
-import ProfileImg from "../images/imagedeProfile.jpg"; // Assuming you have the profile image imported here
-import Logo from "../icons/174857.png"; // Assuming you have the logo imported here
 import Profile from "./ProFile";
 import Business from "./Business/Business";
+import Logo from "../images/logojobnest.jpg"; // Assuming you have the logo imported here
 
-const MessagingNavLink = () => {
-  const [userId, setUserId] = useState(null);
-
-  useEffect(() => {
-    // Fetch user ID here or use your existing method to get the user's ID
-    const userId = sessionStorage.getItem('id');
-    if (userId) {
-      setUserId(userId);
-    }
-  }, []);
-
+const MessagingNavLink = ({ userId }) => {
   return (
     <NavLink
       to={userId ? `http://127.0.0.1:8000/chatify/${userId}` : "/Messaging"}
-      className="col-1 Links p-0 d-flex flex-column text-center "
+      className="col-1 Links p-0 d-flex flex-column text-center"
       style={({ isActive }) => ({
         borderBottom: isActive ? "4px solid black" : "none",
       })}
@@ -38,9 +28,28 @@ const MessagingNavLink = () => {
 }
 
 const NaveBar = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Fetch user ID and user data here
+    const fetchUser = async () => {
+      const storedUserId = sessionStorage.getItem('id');
+      if (storedUserId) {
+        try {
+          const response = await axios.get(`http://localhost:8000/api/getuserById/${storedUserId}`);
+          setUser(response.data); // Assuming response.data contains the user object
+        } catch (error) {
+          console.error('Error fetching user:', error);
+        }
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <div
-      className="container-fluid sticky-top pt-1 w-100 "
+      className="container-fluid sticky-top pt-1 w-100"
       style={{
         borderBottom: "1px solid #D3D3D3",
         backgroundColor: "#FFFFFF",
@@ -52,7 +61,7 @@ const NaveBar = () => {
       >
         <img
           src={Logo}
-          alt=""
+          alt="Logo"
           className="col-1 border p-0 my-2 img-fluid"
           style={{ height: "30px", width: "30px" }}
         />
@@ -86,7 +95,7 @@ const NaveBar = () => {
             />
             <button
               type="button"
-              className="fa-solid fa-x p-3 border my-1 "
+              className="fa-solid fa-x p-3 border my-1"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
               style={{
@@ -116,8 +125,8 @@ const NaveBar = () => {
             <div className="row" style={{ width: "240px" }}>
               <div className="col-4 mx-1 d-flex justify-content-center align-items-center">
                 <img
-                  src={ProfileImg}
-                  alt=""
+                  src={`http://localhost:8000/${user?.pfp}`}
+                  alt="Profile"
                   className="img-fluid"
                   style={{
                     borderRadius: "50px",
@@ -129,12 +138,13 @@ const NaveBar = () => {
               <div className="col-3 p-2 text-center">
                 <i className="fa-solid fa-list-check fs-2 my-2"></i>
               </div>
-              <Link
-                className="col-3 p-2 text-center "
+              <NavLink
+                className="col-3 p-2 text-center"
                 style={{ color: "#EAB458", fontSize: "10px" }}
+                to="/UpgradePlan"
               >
                 Upgrade my plan
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -158,7 +168,7 @@ const NaveBar = () => {
         </NavLink>
         <NavLink
           to="/Network"
-          className="col-1 Links p-0 d-flex flex-column text-center "
+          className="col-1 Links p-0 d-flex flex-column text-center"
           style={({ isActive }) => ({
             borderBottom: isActive ? "4px solid black" : "none",
           })}
@@ -174,7 +184,7 @@ const NaveBar = () => {
         </NavLink>
         <NavLink
           to="/Jobs"
-          className="col-1 Links p-0 d-flex flex-column text-center "
+          className="col-1 Links p-0 d-flex flex-column text-center"
           style={({ isActive }) => ({
             borderBottom: isActive ? "4px solid black" : "none",
           })}
@@ -189,11 +199,11 @@ const NaveBar = () => {
           </span>
         </NavLink>
 
-        <MessagingNavLink />
+        <MessagingNavLink userId={user?.id} />
 
         <NavLink
           to="/Notifications"
-          className="col-1 Links p-0 d-flex flex-column text-center "
+          className="col-1 Links p-0 d-flex flex-column text-center"
           style={({ isActive }) => ({
             borderBottom: isActive ? "4px solid black" : "none",
           })}
@@ -204,72 +214,72 @@ const NaveBar = () => {
             stroke="bold"
             colors="primary:#121331,secondary:#16a9c7,tertiary:#3a3347,quaternary:#ffffff"
             style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
-            />
-            <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
-              Notifications
-            </span>
-          </NavLink>
-          <div className=" col-1 p-0 dropdown mx-1 text-center d-lg-inline d-none">
-            <img
-              src={ProfileImg}
-              alt=""
-              className="toggle my-xl-0 my-2"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              style={{ height: "30px", width: "30px", borderRadius: "50%" }}
-            />
-            <div
-              className="d-xl-block d-none "
-              style={{ cursor: "pointer", color: "#00000099" }}
-            >
-              Me <i className="bi bi-caret-down-fill"></i>
-            </div>
-            <div
-              className="dropdown-menu mt-4"
-              aria-labelledby="dropdownMenuButton1"
-              style={{
-                width: "270px",
-                borderRadius: "10px",
-                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-              }}
-            >
-              {/* component */}
-              <Profile />
-              {/* component */}
-            </div>
-          </div>
+          />
+          <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>
+            Notifications
+          </span>
+        </NavLink>
+        <div className="col-1 p-0 dropdown mx-1 text-center d-lg-inline d-none">
+          <img
+            src={`http://localhost:8000/${user?.pfp}`}
+            alt="Profile"
+            className="toggle my-xl-0 my-2"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style={{ height: "30px", width: "30px", borderRadius: "50%" }}
+          />
           <div
-            className="col-1 d-lg-inline d-none"
-            style={{ borderLeft: "1px solid gray", width: "1px" }}
-          ></div>
-          <div
-            className="col-1 text-center d-lg-inline d-none p-0 cursor"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight"
+            className="d-xl-block d-none"
+            style={{ cursor: "pointer", color: "#00000099" }}
           >
-            <i className="fa-solid fa-list-check fs-5 mt-xl-0"></i>
-            <div className="d-xl-block d-none" style={{ color: "#00000099" }}>
-              For Business
-            </div>
+            Me <i className="bi bi-caret-down-fill"></i>
           </div>
           <div
-            className="offcanvas offcanvas-end p-0"
-            tabIndex="-1"
-            id="offcanvasRight"
-            aria-labelledby="offcanvasRightLabel"
+            className="dropdown-menu mt-4"
+            aria-labelledby="dropdownMenuButton1"
+            style={{
+              width: "270px",
+              borderRadius: "10px",
+              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            }}
           >
-            <Business />
+            {/* component */}
+            <Profile />
+            {/* component */}
           </div>
-          <Link className="col-1 Links p-0 d-xl-inline d-none">
-            <div style={{ color: "#EAB458" }} className="fs-6">
-              Upgrade My Plan
-            </div>
-          </Link>
         </div>
+        <div
+          className="col-1 d-lg-inline d-none"
+          style={{ borderLeft: "1px solid gray", width: "1px" }}
+        ></div>
+        <div
+          className="col-1 text-center d-lg-inline d-none p-0 cursor"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+          <i className="fa-solid fa-list-check fs-5 mt-xl-0"></i>
+          <div className="d-xl-block d-none" style={{ color: "#00000099" }}>
+            For Business
+          </div>
+        </div>
+        <div
+          className="offcanvas offcanvas-end p-0"
+          tabIndex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+        >
+          <Business />
+        </div>
+        <NavLink className="col-1 Links p-0 d-xl-inline d-none" to="/UpgradePlan">
+          <div style={{ color: "#EAB458" }} className="fs-6">
+            Upgrade My Plan
+          </div>
+        </NavLink>
       </div>
-    );
-  };
-  
-  export default NaveBar;
+    </div>
+  );
+};
+
+export default NaveBar;

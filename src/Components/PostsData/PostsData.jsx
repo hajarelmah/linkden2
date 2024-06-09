@@ -1,43 +1,57 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useReducer } from 'react';
 
 const PostsData = () => {
   const [posts, setPosts] = useState([]);
   const [showCommentInput, setShowCommentInput] = useState(-1);
   const [commentContent, setCommentContent] = useState('');
+  const [newPost, setNewPost] = useState(sessionStorage.getItem('post_flag'));
 
   useEffect(() => {
     const fetchPosts = async () => {
+      console.log('Fetching posts because newPost changed:', newPost);
+
       try {
         const response = await axios.get('http://localhost:8000/api/get-posts');
 
         const postsWithProfilePic = await Promise.all(
           response.data.map(async (post) => {
-            const userResponse = await axios.get(`http://localhost:8000/api/getuserById/${post.post_owner_id}`);
-            const profilePic = userResponse.data.pfp;
+            let profilePic = '';
+            let comments = [];
+
+            // Fetch user profile picture
+            try {
+              const userResponse = await axios.get(`http://localhost:8000/api/getuserById/${post.post_owner_id}`);
+              profilePic = userResponse.data.pfp;
+            } catch (userError) {
+              if (userError.response && userError.response.status === 404) {
+                console.log('User not found for post owner id:', post.post_owner_id);
+              } else {
+                console.error('Error fetching user:', userError);
+              }
+            }
 
             // Fetch comments for this post
-            let comments = [];
             try {
               const commentsResponse = await axios.get(`http://localhost:8000/api/get-comments/${post.id}`);
               if (commentsResponse.status === 200) {
                 comments = commentsResponse.data;
               }
-            } catch (error) {
-              // Handle case where there are no comments for this post
-              if (error.response && error.response.status === 400) {
+            } catch (commentsError) {
+              if (commentsError.response && commentsError.response.status === 400) {
                 console.log('No comments found for post:', post.id);
-                comments = [];
               } else {
-                console.error('Error fetching comments:', error);
+                console.error('Error fetching comments:', commentsError);
               }
             }
 
             return { ...post, profilePic, comments };
           })
         );
+         
 
-        setPosts(postsWithProfilePic);
+         setPosts(postsWithProfilePic);
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
@@ -45,7 +59,6 @@ const PostsData = () => {
 
     fetchPosts();
   }, []);
-
   const handleLikeUpdate = async (postId, index) => {
     try {
       const response = await axios.post(`http://localhost:8000/api/likeUpdate/${postId}`);
@@ -108,7 +121,7 @@ const PostsData = () => {
               <div className="h-75">Suggested</div>
             </div>
             <div className="col-md-2 col-3 d-flex gap-2 mx-3">
-              <div className="px-2  button" style={{ borderRadius: "50px" }}>
+              <div className="px-2 button" style={{ borderRadius: "50px" }}>
                 <i className="bi bi-three-dots fs-3"></i>
               </div>
               <div className="px-2 rounded-circle button" style={{ borderRadius: "50px" }}>
@@ -118,9 +131,9 @@ const PostsData = () => {
           </div>
           <div className="row mt-3 d-flex justify-content-between">
             <div className="col-md-6 col-8 d-flex p-0 align-items-center">
-              <img src={`http://localhost:8000/` + post.profilePic} alt="" className="rounded-circle" style={{ height: "60px", width: "60px" }} />
+              <img src={`http://localhost:8000/${post.profilePic}`} alt="" className="rounded-circle" style={{ height: "60px", width: "60px" }} />
               <div className="mx-2">
-                <div className="fw-bold fs-6 ">{post.username}</div>
+                <div className="fw-bold fs-6">{post.username}</div>
                 <div className="fs-6">
                   {post.date}<i className="fa-solid fa-earth-americas mx-1"></i>
                 </div>
@@ -136,7 +149,7 @@ const PostsData = () => {
           {post.image && (
             <div className="row mt-3">
               <div className="col-12 p-0">
-                <img src={'http://localhost:8000' + post.image} alt="img" className="img-fluid rounded-3" />
+                <img src={`http://localhost:8000${post.image}`} alt="img" className="img-fluid rounded-3" />
               </div>
             </div>
           )}
@@ -145,10 +158,7 @@ const PostsData = () => {
             <div className="col-3 button p-1 text-center rounded-3 cursor" onClick={() => handleLikeUpdate(post.id, index)}>
               <i className="bi bi-hand-thumbs-up mx-1 fs-5"></i>Like ({post.likes})
             </div>
-            <div
-              className="col-3 button p-1 text-center rounded-3 cursor"
-              onClick={() => handleCommentClick(index)}
-            >
+            <div className="col-3 button p-1 text-center rounded-3 cursor" onClick={() => handleCommentClick(index)}>
               <i className="bi bi-chat mx-1 fs-5"></i>Comment
             </div>
             <div className="col-3 button p-1 text-center rounded-3 cursor">
@@ -188,10 +198,7 @@ const PostsData = () => {
                     value={commentContent}
                     onChange={(e) => setCommentContent(e.target.value)}
                   />
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => handleCommentSubmit(post.id)}
-                  >
+                  <button className="btn btn-primary" onClick={() => handleCommentSubmit(post.id)}>
                     Send
                   </button>
                 </div>

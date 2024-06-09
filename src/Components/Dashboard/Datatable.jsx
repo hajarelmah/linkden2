@@ -1,4 +1,7 @@
+// Datatable.jsx
+
 import "./datatable.scss";
+import "./Datatable.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -6,14 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 const Datatable = () => {
   const [data, setData] = useState([]);
-  const role= sessionStorage.getItem('role');
+  const role = sessionStorage.getItem('role');
   const Navigate = useNavigate();
 
   useEffect(() => {
-    if(!role=='admin'){
+    if (!role === 'admin') {
       Navigate('/Home');
     }
-   
+
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:8000/api/getUsers");
@@ -34,9 +37,11 @@ const Datatable = () => {
 
   const handleDelete = async (id) => {
     try {
+      // Make an API call to delete the user
       await fetch(`http://localhost:8000/api/deleteUser/${id}`, {
         method: "DELETE",
       });
+      // Remove the deleted user from the table
       setData(data.filter((item) => item.id !== id));
     } catch (err) {
       console.log(err);
@@ -45,18 +50,21 @@ const Datatable = () => {
 
   const userColumns = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "user_name", headerName: "User Name", width: 150 },
+    { field: "full_name", headerName: "User Name", width: 150 },
+
     {
-      field: "user",
-      headerName: "User",
+      field: "pfp",
+      headerName: "Image",
       width: 230,
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
-            {/* // needs to be fixed  */}
-          <img className="cellImg" src={`http://localhost:8000${params.row.user ? params.row.user.pfp : ''}`} alt="avatar" />
-           { params.row.pfp}
-          </div>  
+            {params.value ? (
+              <img className="cellImg" src={`http://localhost:8000/${params.value}`} alt="avatar" />
+            ) : (
+              <span>No Image</span>
+            )}
+          </div>
         );
       },
     },
@@ -91,6 +99,7 @@ const Datatable = () => {
 
   return (
     <div className="datatable">
+      <div className="bigTitle">Welcome to your Dashboard</div> {/* Added big title */}
       <div className="datatableTitle">
         Add New User
         <Link to="/users/new" className="link">

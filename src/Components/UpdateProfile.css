@@ -1,0 +1,85 @@
+.custom-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  
+  .custom-preview-image {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  
+  .btn-custom-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-custom-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-custom-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .btn-custom-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+  }
+  /* UpdateProfile.css */
+
+/* Title styling */
+.card-title {
+    font-size: 2.5rem; /* Increase font size */
+    text-align: center; /* Center align */
+  }
+  
+  /* Text input styling */
+  .form-control {
+    border: 1px solid #ced4da; /* Add border */
+    border-radius: 8px; /* Add border radius */
+    padding: 0.5rem 1rem; /* Add padding */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Add transition */
+  }
+  
+  .form-control:focus {
+    border-color: #80bdff; /* Change border color on focus */
+    outline: 0; /* Remove default focus styling */
+    box-shadow: 0 0 0 0.25rem rgba(114, 179, 249, 0.25); /* Add focus shadow */
+  }
+  /* UpdateProfile.css */
+/* UpdateProfile.css */
+
+/* .custom-card {
+    background: linear-gradient(to bottom, #b3e0ff, #ffffff);
+    border-radius: 10px;
+  } */
+
+  /* UpdateProfile.css */
+
+/* UpdateProfile.css */
+
+/* UpdateProfile.css */
+
+.custom-card {
+    background: linear-gradient(to left, #86b3fc, #ffffff); /* Use linear gradient */
+    border-radius: 10px;
+    width: 90vw; /* Set width to 90% of the viewport width */
+    max-width: 1200px; /* Set a maximum width */
+    margin: auto; /* Center the card horizontally */
+  }
+  
+  /* Rest of your existing styles */
+  
+  /* Rest of your existing styles */
+  
+  
+  /* Rest of your existing styles */
+  
+  
+  /* Rest of your existing styles */
+  
+  

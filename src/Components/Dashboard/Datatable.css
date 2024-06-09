@@ -1,0 +1,61 @@
+/* Styles for the container div */
+.datatable {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f0f8ff; /* Light blue background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+/* Styles for the title section */
+.datatableTitle {
+    font-size: 36px; /* Increased font size */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #73ccff; /* Dark blue color */
+    text-align: center; /* Center align the title */
+}
+
+/* Styles for the cell with image */
+.cellWithImg {
+    display: flex;
+    align-items: center;
+}
+
+/* Styles for the image inside the cell */
+.cellImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Styles for the view button */
+.viewButton {
+    background-color: #9edfff; /* Dark blue color */
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.viewButton:hover {
+    background-color:  #4a91ec; /* Darker shade of blue on hover */
+}
+
+/* Styles for the delete button */
+.deleteButton {
+    background-color: #9edfff; /* Red color */
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+    background-color: #4a91ec; /* Darker shade of red on hover */
+}
