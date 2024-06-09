@@ -19,7 +19,7 @@ use App\Http\Controllers\PostsController;
 
 Route::post("/modify",[usersController::class,"modifyUser"]);
 Route::post("/signup",[usersController::class,"signup"]);
-Route::post("/login",[usersController::class,"login"]);
+Route::post("/login",[usersController::class,"login"]);  
 Route::post('/UpdateProfile', [ProfileController::class, 'updateProfile']);
 Route::post("/upload",[FileUploadController::class,"upload"]);
 Route::get("/getUsers",[usersController::class,"getUsers"]);

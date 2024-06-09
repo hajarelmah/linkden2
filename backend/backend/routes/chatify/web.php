@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Route;
+
 /**
  * -----------------------------------------------------------------
  * NOTE : There is two routes has a name (user & group),
@@ -8,10 +10,9 @@
  * -----------------------------------------------------------------
  */
 
-use Illuminate\Support\Facades\Route;
-
 /*
 * This is the main app route [Chatify Messenger]
+* This route is accessible to all users, authenticated or not.
 */
 Route::get('/', 'MessagesController@index')->name(config('chatify.routes.prefix'));
 
@@ -55,14 +56,13 @@ Route::get('/getContacts', 'MessagesController@getContacts')->name('contacts.get
  */
 Route::post('/updateContacts', 'MessagesController@updateContactItem')->name('contacts.update');
 
-
 /**
  * Star in favorite list
  */
 Route::post('/star', 'MessagesController@favorite')->name('star');
 
 /**
- * get favorites list
+ * Get favorites list
  */
 Route::post('/favorites', 'MessagesController@getFavorites')->name('favorites');
 
@@ -96,23 +96,20 @@ Route::post('/updateSettings', 'MessagesController@updateSettings')->name('avata
  */
 Route::post('/setActiveStatus', 'MessagesController@setActiveStatus')->name('activeStatus.set');
 
-
-
-
-
-
 /*
 * [Group] view by id
 */
 Route::get('/group/{id}', 'MessagesController@index')->name('group');
 
 /*
-* user view by id.
+* User view by id.
 * Note : If you added routes after the [User] which is the below one,
-* it will considered as user id.
-*
-* e.g. - The commented routes below :
+* it will be considered as user id.
 */
-// Route::get('/route', function(){ return 'Munaf'; }); // works as a route
 Route::get('/getuserById/{id}', 'MessagesController@index')->name('user');
-// Route::get('/route', function(){ return 'Munaf'; }); // works as a user id
+
+/*
+* The following line is commented out but could potentially cause conflicts.
+*/
+// Route::get('/chatify/{userId}', 'MessagesController@userMessaging')->name('user.messaging');
+

@@ -4,7 +4,7 @@
 <div class="messenger-infoView-btns">
     <a href="#" class="danger delete-conversation">Delete Conversation</a>
 </div>
-{{-- shared photos --}}
+{{-- shared photos2 --}}
 <div class="messenger-infoView-shared">
     <p class="messenger-title"><span>Shared Photos</span></p>
     <div class="shared-photos-list"></div>
