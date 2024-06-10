@@ -5,7 +5,7 @@ const Loader = () => {
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-3">
             <img
-              src="https://logos-world.net/wp-content/uploads/2020/05/Linkedin-Logo.png"
+              src="src/images/jobnest.jpg"
               className=" img-fluid"
               alt=""
             />

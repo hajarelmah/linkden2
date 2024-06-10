@@ -36,7 +36,7 @@ const Prefer = () => {
                   <div style={{ fontSize: "20px", fontWeight: "500" }}>
                     Open to work
                     <p className="fs-6 fw-normal">
-                      Job preferences visible to all LinkedIn members
+                      Job preferences visible to all Job Nest members
                     </p>
                   </div>
                   <div className="d-flex justify-content-end align-items-center w-25">

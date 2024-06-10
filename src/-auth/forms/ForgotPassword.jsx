@@ -7,7 +7,7 @@ const ForgotPassword = () => {
         <div className="container">
           <div className="d-flex justify-content-between">
             <img
-              src="https://logos-world.net/wp-content/uploads/2020/05/Linkedin-Logo.png "
+              src="src/images/jobnest.jpg "
               alt=""
               style={{ height: "80px", width: "130px" }}
             />

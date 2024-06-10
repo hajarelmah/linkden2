@@ -15,9 +15,12 @@ const MessagingNavLink = ({ userId }) => {
         borderBottom: isActive ? "4px solid black" : "none",
       })}
     >
+      <script src="https://cdn.lordicon.com/lordicon.js"></script>
       <Lordicon
-        src="https://cdn.lordicon.com/kiynvdns.json"
+        src="https://cdn.lordicon.com/lixfwihp.json"
         trigger="hover"
+        state="hover-draw"
+        stroke="bold"
         style={{ width: "30px", height: "30px", margin: "auto" }} // Adjust size as needed
       />
       <span className="d-xl-inline d-none" style={{ color: "#00000099" }}>

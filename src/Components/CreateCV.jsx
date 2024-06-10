@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-//import "./CreateCV.css";
 
 const CreateCV = () => {
   const [formData, setFormData] = useState({
@@ -59,294 +57,247 @@ const CreateCV = () => {
   };
 
   const handleDownloadPDF = () => {
-    const input = document.getElementById("cv-content");
-    html2canvas(input)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, "PNG", 0, 0);
-        pdf.save("cv.pdf");
-      });
+    const pdf = new jsPDF();
+
+    pdf.setTextColor(0, 0, 255); // Blue color
+    pdf.setFontSize(22);
+    pdf.text("Curriculum Vitae", 10, 10);
+
+    pdf.setTextColor(0);
+    pdf.setFontSize(16);
+    pdf.text("Informations personnelles", 10, 30);
+    pdf.setFontSize(12);
+    pdf.text("Nom complet: " + formData.fullName, 10, 40);
+    pdf.text("Email: " + formData.email, 10, 50);
+    pdf.text("Numéro de téléphone: " + formData.phoneNumber, 10, 60);
+    pdf.text("Adresse: " + formData.address, 10, 70);
+    pdf.text("Profil: " + formData.profile, 10, 80);
+    pdf.text("Statut: " + formData.status, 10, 90);
+    pdf.text("Âge: " + formData.age, 10, 100);
+
+    pdf.setTextColor(0, 0, 255);
+    pdf.setFontSize(16);
+    pdf.text("Détails de l'éducation", 10, 110);
+    pdf.setTextColor(0);
+    pdf.setFontSize(12);
+    pdf.text("Nom de l'école: " + formData.education.schoolName, 10, 120);
+    pdf.text("Diplôme: " + formData.education.degree, 10, 130);
+    pdf.text("Domaine d'étude: " + formData.education.fieldOfStudy, 10, 140);
+    pdf.text("Année de graduation: " + formData.education.graduationYear, 10, 150);
+
+    pdf.setTextColor(0, 0, 255);
+    pdf.setFontSize(16);
+    pdf.text("Expérience", 10, 160);
+    pdf.setTextColor(0);
+    pdf.setFontSize(12);
+    pdf.text("Nom de l'entreprise: " + formData.experience.companyName, 10, 170);
+    pdf.text("Poste: " + formData.experience.position, 10, 180);
+    pdf.text("Date de début: " + formData.experience.startDate, 10, 190);
+    pdf.text("Date de fin: " + formData.experience.endDate, 10, 200);
+    pdf.text("Responsabilités: " + formData.experience.responsibilities, 10, 210);
+
+    pdf.setTextColor(0, 0, 255);
+    pdf.setFontSize(16);
+    pdf.text("Centre d'intérêt", 10, 220);
+    pdf.setTextColor(0);
+    pdf.setFontSize(12);
+    pdf.text("Centre d'intérêt: " + formData.centerOfInterest, 10, 230);
+
+    pdf.setTextColor(0, 0, 255);
+    pdf.setFontSize(16);
+    pdf.text("Langues", 10, 240);
+    pdf.setTextColor(0);
+    pdf.setFontSize(12);
+    pdf.text("Langues: " + formData.languages, 10, 250);
+
+    pdf.setTextColor(0, 0, 255);
+    pdf.setFontSize(16);
+    pdf.text("Compétences", 10, 260);
+    pdf.setTextColor(0);
+    pdf.setFontSize(12);
+    pdf.text("Compétences: " + formData.skills.join(", "), 10, 270);
+
+    pdf.save("cv.pdf");
   };
 
   return (
-    <div className="container" id="cv-content">
-      <div className="left-side">
-        <h1 className="header">Générateur de CV</h1>
-        <form onSubmit={handleSubmit} className="form">
-          {/* Personal information */}
-          <div className="form-group">
-            <label htmlFor="fullName" className="form-label">
-              Nom complet
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phoneNumber" className="form-label">
-              Numéro de téléphone
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="phoneNumber"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="address" className="form-label">
-              Adresse
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="address"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="profile" className="form-label">
-              Profil
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="profile"
-              name="profile"
-              value={formData.profile}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="status" className="form-label">
-              Statut
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="status"
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="age" className="form-label">
-              Âge
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="age"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-            />
-          </div>
-          {/* Education details */}
-          <h2 className="subheader">Détails de l'éducation</h2>
-          <div className="form-group">
-            <label htmlFor="schoolName" className="form-label">
-              Nom de l'école
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="schoolName"
-              name="education"
-              data-field="schoolName"
-              value={formData.education.schoolName}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="degree" className="form-label">
-              Diplôme
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="degree"
-              name="education"
-              data-field="degree"
-              value={formData.education.degree}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="fieldOfStudy" className="form-label">
-              Domaine d'étude
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="fieldOfStudy"
-              name="education"
-              data-field="fieldOfStudy"
-              value={formData.education.fieldOfStudy}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="graduationYear" className="form-label">
-              Année de graduation
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="graduationYear"
-              name="education"
-              data-field="graduationYear"
-              value={formData.education.graduationYear}
-              onChange={handleChange}
-            />
-          </div>
-        </form>
-      </div>
-      <div className="right-side">
-        <h2 className="subheader">Expérience</h2>
-        <div className="form-group">
-          <label htmlFor="companyName" className="form-label">
-            Nom de l'entreprise
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="companyName"
-            name="experience"
-            data-field="companyName"
-            value={formData.experience.companyName}
-            onChange={handleChange}
-          />
+    <div className="container" id="cv-content" style={containerStyle}>
+      <h1 style={headerStyle}>Générateur de CV</h1>
+      <div className="cv-sections" style={cvSectionsStyle}>
+        <div className="left-side" style={sideStyle}>
+          <h2 style={subheaderStyle}>Informations personnelles</h2>
+          <form onSubmit={handleSubmit} style={formStyle}>
+            <div style={formGroupStyle}>
+              <label style={formLabelStyle} htmlFor="fullName">Nom complet</label>
+              <input style={formControlStyle} type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} />
+            </div>
+            <div style={formGroupStyle}>
+              <label style={formLabelStyle} htmlFor="email">Email</label>
+              <input style={formControlStyle} type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+            </div>
+            <div style={formGroupStyle}>
+              <label style={formLabelStyle} htmlFor="phoneNumber">Numéro de téléphone</label>
+              <input style={formControlStyle} type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+            </div>
+            <div style={formGroupStyle}>
+              <label style={formLabelStyle} htmlFor="address">Adresse</label>
+              <input style={formControlStyle} type="text" id="address" name="address" value={formData.address} onChange={handleChange} />
+            </div>
+            <div style={formGroupStyle}>
+              <label style={formLabelStyle} htmlFor="profile">Profil</label>
+              <input style={formControlStyle} type="text" id="profile" name="profile" value={formData.profile} onChange={handleChange} />
+            </div>
+            <div style={formGroupStyle}>
+              <label style={formLabelStyle} htmlFor="status">Statut</label>
+              <input style={formControlStyle} type="text" id="status" name="status" value={formData.status} onChange={handleChange} />
+            </div>
+            <div style={formGroupStyle}>
+              <label style={formLabelStyle} htmlFor="age">Âge</label>
+              <input style={formControlStyle} type="text" id="age" name="age" value={formData.age} onChange={handleChange} />
+            </div>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="position" className="form-label">
-            Poste
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="position"
-            name="experience"
-            data-field="position"
-            value={formData.experience.position}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="startDate" className="form-label">
-            Date de début
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="startDate"
-            name="experience"
-            data-field="startDate"
-            value={formData.experience.startDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="endDate" className="form-label">
-            Date de fin
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="endDate"
-            name="experience"
-            data-field="endDate"
-            value={formData.experience.endDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="responsibilities" className="form-label">
-            Responsabilités
-          </label>
-          <textarea
-            className="form-control"
-            id="responsibilities"
-            name="experience"
-            data-field="responsibilities"
-            value={formData.experience.responsibilities}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <h2 className="subheader">Centre d'intérêt</h2>
-        <div className="form-group">
-          <label htmlFor="centerOfInterest" className="form-label">
-            Centre d'intérêt
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="centerOfInterest"
-            name="centerOfInterest"
-            value={formData.centerOfInterest}
-            onChange={handleChange}
-          />
-        </div>
-        <h2 className="subheader">Langues</h2>
-        <div className="form-group">
-          <label htmlFor="languages" className="form-label">
-            Langues
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="languages"
-            name="languages"
-            value={formData.languages}
-            onChange={handleChange}
-          />
-        </div>
-        <h2 className="subheader">Compétences</h2>
-        <div className="form-group">
-          <label htmlFor="skills" className="form-label">
-            Compétences (séparées par une virgule)
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="skills"
-            name="skills"
-            value={formData.skills}
-            onChange={handleChange}
-          />
+        <div className="right-side" style={sideStyle}>
+          <h2 style={subheaderStyle}>Centre d'intérêt</h2>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="centerOfInterest">Centre d'intérêt</label>
+            <input style={formControlStyle} type="text" id="centerOfInterest" name="centerOfInterest" value={formData.centerOfInterest} onChange={handleChange} />
+          </div>
+          <h2 style={subheaderStyle}>Langues</h2>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="languages">Langues</label>
+            <input style={formControlStyle} type="text" id="languages" name="languages" value={formData.languages} onChange={handleChange} />
+          </div>
+          <h2 style={subheaderStyle}>Compétences</h2>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="skills">Compétences (séparées par une virgule)</label>
+            <input style={formControlStyle} type="text" id="skills" name="skills" value={formData.skills} onChange={handleChange} />
+          </div>
         </div>
       </div>
-      <div className="btn-container">
-        <button onClick={handleDownloadPDF} className="btn btn-primary btn-download">
-          Télécharger votre CV 
-        </button>
+      <div className="cv-sections" style={cvSectionsStyle}>
+        <div className="left-side" style={sideStyle}>
+          <h2 style={subheaderStyle}>Détails de l'éducation</h2>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="schoolName">Nom de l'école</label>
+            <input style={formControlStyle} type="text" id="schoolName" name="education" data-field="schoolName" value={formData.education.schoolName} onChange={handleChange} />
+          </div>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="degree">Diplôme</label>
+            <input style={formControlStyle} type="text" id="degree" name="education" data-field="degree" value={formData.education.degree} onChange={handleChange} />
+          </div>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="fieldOfStudy">Domaine d'étude</label>
+            <input style={formControlStyle} type="text" id="fieldOfStudy" name="education" data-field="fieldOfStudy" value={formData.education.fieldOfStudy} onChange={handleChange} />
+          </div>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="graduationYear">Année de graduation</label>
+            <input style={formControlStyle} type="text" id="graduationYear" name="education" data-field="graduationYear" value={formData.education.graduationYear} onChange={handleChange} />
+          </div>
+        </div>
+        <div className="right-side" style={sideStyle}>
+          <h2 style={subheaderStyle}>Expérience</h2>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="companyName">Nom de l'entreprise</label>
+            <input style={formControlStyle} type="text" id="companyName" name="experience" data-field="companyName" value={formData.experience.companyName} onChange={handleChange} />
+          </div>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="position">Poste</label>
+            <input style={formControlStyle} type="text" id="position" name="experience" data-field="position" value={formData.experience.position} onChange={handleChange} />
+          </div>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="startDate">Date de début</label>
+            <input style={formControlStyle} type="text" id="startDate" name="experience" data-field="startDate" value={formData.experience.startDate} onChange={handleChange} />
+          </div>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="endDate">Date de fin</label>
+            <input style={formControlStyle} type="text" id="endDate" name="experience" data-field="endDate" value={formData.experience.endDate} onChange={handleChange} />
+          </div>
+          <div style={formGroupStyle}>
+            <label style={formLabelStyle} htmlFor="responsibilities">Responsabilités</label>
+            <textarea style={formControlStyle} id="responsibilities" name="experience" data-field="responsibilities" value={formData.experience.responsibilities} onChange={handleChange}></textarea>
+          </div>
+        </div>
+      </div>
+      <div style={btnContainerStyle}>
+        <button onClick={handleDownloadPDF} style={btnStyle}>Télécharger votre CV</button>
       </div>
     </div>
   );
+};
+
+const containerStyle = {
+  fontFamily: 'Arial, sans-serif',
+  color: '#333',
+  maxWidth: '900px',
+  margin: '0 auto',
+  padding: '20px',
+  border: '1px solid #ccc',
+  borderRadius: '10px',
+  boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
+};
+
+const headerStyle = {
+  textAlign: 'center',
+  marginBottom: '20px',
+  fontSize: '2em',
+  color: '#007BFF'
+};
+
+const cvSectionsStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  marginBottom: '20px'
+};
+
+const sideStyle = {
+  flex: 1,
+  padding: '10px'
+};
+
+const formStyle = {
+  display: 'flex',
+  flexDirection: 'column'
+};
+
+const formGroupStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  marginBottom: '15px'
+};
+
+const formLabelStyle = {
+  marginBottom: '5px',
+  fontWeight: 'bold'
+};
+
+const formControlStyle = {
+  padding: '10px',
+  fontSize: '1em',
+  borderRadius: '5px',
+  border: '1px solid #ccc'
+};
+
+const subheaderStyle = {
+  marginTop: '20px',
+  marginBottom: '10px',
+  fontSize: '1.5em',
+  color: '#007BFF'
+};
+
+const btnContainerStyle = {
+  textAlign: 'center',
+  marginTop: '20px'
+};
+
+const btnStyle = {
+  padding: '10px 20px',
+  fontSize: '1em',
+  color: '#fff',
+  backgroundColor: '#007BFF',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer'
 };
 
 export default CreateCV;

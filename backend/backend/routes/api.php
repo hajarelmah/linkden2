@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\usersController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProfileUserController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +36,8 @@ Route::get("/likeCount/{id}", [PostsController::class, "likeCount"]);
 
 Route::post("/post-comment/{id}", [PostsController::class, "comments"]);
 Route::get("/get-comments/{post_id}", [PostsController::class, "getPostComments"]);
+
+Route::post('/profileuser', [ProfileUserController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

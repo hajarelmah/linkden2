@@ -1,24 +1,24 @@
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-const EditTopLeft = () => {
+const ProfileV = () => {
   const [user, setUser] = useState(null);
   const fileInputRef = useRef(null);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const id = sessionStorage.getItem('id');
         const response = await axios.get(`http://localhost:8000/api/getuserById/${id}`);
         setUser(response.data);
       } catch (error) {
-        console.error('Error fetching user:', error);
+        console.error("Error fetching user:", error);
       }
     };
 
     fetchUser();
-  }, []);
+  }, [id]);
 
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
@@ -123,4 +123,4 @@ const EditTopLeft = () => {
   );
 };
 
-export default EditTopLeft;
+export default ProfileV;

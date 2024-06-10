@@ -80,6 +80,12 @@ const PostsData = () => {
     setCommentContent('');
   };
 
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+    return date.toLocaleDateString('en-US', options);
+  };
+
   const handleCommentSubmit = async (postId) => {
     try {
       const userPfp = window.sessionStorage.getItem('pfp');
@@ -130,22 +136,31 @@ const PostsData = () => {
             </div>
           </div>
           <div className="row mt-3 d-flex justify-content-between">
-            <div className="col-md-6 col-8 d-flex p-0 align-items-center">
-              <img src={`http://localhost:8000/${post.profilePic}`} alt="" className="rounded-circle" style={{ height: "60px", width: "60px" }} />
-              <div className="mx-2">
-                <div className="fw-bold fs-6">{post.username}</div>
-                <div className="fs-6">
-                  {post.date}<i className="fa-solid fa-earth-americas mx-1"></i>
-                </div>
-                <div className="fs-6">{post.comment}</div>
-              </div>
-            </div>
-            <div className="col-3 d-flex align-items-center justify-content-end p-1">
-              <div className="text-center p-2 fs-5 fw-bold Blue rounded" style={{ color: "#0A66C2", cursor: "pointer" }}>
-                Follow
-              </div>
-            </div>
-          </div>
+  <div className="col-md-6 col-8 d-flex p-0 align-items-center">
+    <img src={`http://localhost:8000/${post.profilePic}`} alt="" className="rounded-circle" style={{ height: "60px", width: "60px" }} />
+    <div className="mx-2">
+      <div className="fw-bold fs-6">{post.username}</div>
+      <div className="fs-6">
+        {post.date}<i className="fa-solid fa-earth-americas mx-1"></i>
+      </div>
+    </div>
+  </div>
+  <div className="col-3 d-flex align-items-center justify-content-end p-1">
+  <div className="text-center p-2 fs-6 fw-bold text-muted rounded" style={{ cursor: "pointer" }}>
+    <span style={{ color: "#6c757d" }}>Posted: </span>{formatDate(post.created_at)}
+  </div>
+</div>
+
+</div>
+<div className="row mt-2">
+  
+  <div className="col-12 p-0">
+    
+    <div style={{ width: "100%" }}>{post.comment}</div> {/* Set width to 100% */}
+  </div>
+</div>
+
+
           {post.image && (
             <div className="row mt-3">
               <div className="col-12 p-0">
@@ -156,59 +171,99 @@ const PostsData = () => {
           <div className="row mt-2" style={{ height: "2px", backgroundColor: "#BEBDBA" }}></div>
           <div className="row p-2">
             <div className="col-3 button p-1 text-center rounded-3 cursor" onClick={() => handleLikeUpdate(post.id, index)}>
-              <i className="bi bi-hand-thumbs-up mx-1 fs-5"></i>Like ({post.likes})
-            </div>
-            <div className="col-3 button p-1 text-center rounded-3 cursor" onClick={() => handleCommentClick(index)}>
-              <i className="bi bi-chat mx-1 fs-5"></i>Comment
-            </div>
-            <div className="col-3 button p-1 text-center rounded-3 cursor">
-              <i className="bi bi-arrow-repeat mx-1 fs-5"></i>Repost
-            </div>
-            <div className="col-3 p-1 button text-center rounded-3 cursor">
-              <i className="bi bi-send mx-1 fs-5"></i>Send
-            </div>
-          </div>
-
-          {/* Display existing comments */}
-          {post.comments.length > 0 && (
-            <div className="row mt-2">
-              <div className="col-12">
-                <h5>Comments</h5>
-                {post.comments.map((comment, commentIndex) => (
-                  <div key={commentIndex} className="d-flex align-items-center my-2">
-                    <img src={`http://localhost:8000/${comment.user_pfp}`} alt="" className="rounded-circle" style={{ height: "30px", width: "30px" }} />
-                    <div className="ms-2">
-                      <div className="fw-bold">{comment.username}</div>
-                      <div>{comment.content}</div>
-                    </div>
-                  </div>
-                ))}
+              {/* Lordicon for Like */}
+              <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                             <lord-icon
+                  src="https://cdn.lordicon.com/zjhryiyb.json"
+                  trigger="hover"
+                  style={{ width: "36px", height: "36px", cursor: "pointer" }}
+                  onClick={() => handleLikeUpdate(post.id, index)}
+                ></lord-icon>
+                Like ({post.likes})
               </div>
-            </div>
-          )}
+              <div className="col-3 button p-1 text-center rounded-3 cursor" onClick={() => handleCommentClick(index)}>
+  {/* Lordicon for Comment */}
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <lord-icon
+    src="https://cdn.lordicon.com/ylvuooxd.json"
+    trigger="hover"
+    state="in-dynamic"
+    style={{ width: "36px", height: "36px"}}
+    onClick={() => handleCommentClick(index)}
+  ></lord-icon>
+  Comment
+</div>
 
-          {showCommentInput === index && (
-            <div className="row my-2">
-              <div className="col-12">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Write a comment..."
-                    value={commentContent}
-                    onChange={(e) => setCommentContent(e.target.value)}
-                  />
-                  <button className="btn btn-primary" onClick={() => handleCommentSubmit(post.id)}>
-                    Send
-                  </button>
+<div className="col-3 button p-1 text-center rounded-3 cursor">
+  {/* Lordicon for Repost */}
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <lord-icon
+    src="https://cdn.lordicon.com/rkiwwysn.json"
+    trigger="hover"
+    colors="primary:#30c9e8"
+    style={{ width: "36px", height: "36px", cursor: "pointer" }}
+  ></lord-icon>
+  Repost
+</div>
+
+<div className="col-3 p-1 button text-center rounded-3 cursor">
+  {/* Lordicon for Send */}
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <lord-icon
+    src="https://cdn.lordicon.com/sskjoohc.json"
+    trigger="hover"
+    state="hover-slide"
+    colors="primary:#66d7ee,secondary:#ebe6ef"
+    style={{ width: "36px", height: "36px", cursor: "pointer" }}
+  ></lord-icon>
+  Send
+</div>
+
+            </div>
+
+            {/* Display existing comments */}
+            {post.comments.length > 0 && (
+              <div className="row mt-2">
+                <div className="col-12">
+                  
+                  <h5>Comments</h5>
+                  <hr></hr>
+                  {post.comments.map((comment, commentIndex) => (
+                    <div key={commentIndex} className="d-flex align-items-center my-2">
+                      <img src={`http://localhost:8000/${comment.user_pfp}`} alt="" className="rounded-circle" style={{ height: "30px", width: "30px" }} />
+                      <div className="ms-2">
+                        <div className="fw-bold">{comment.username}</div>
+                        <div>{comment.content}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      ))}
-    </>
-  );
-};
+            )}
 
-export default PostsData;
+            {showCommentInput === index && (
+              <div className="row my-2">
+                <div className="col-12">
+                  <div className="input-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Write a comment..."
+                      value={commentContent}
+                      onChange={(e) => setCommentContent(e.target.value)}
+                    />
+                    <button className="btn btn-primary" onClick={() => handleCommentSubmit(post.id)}>
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </>
+    );
+  };
+
+  export default PostsData;
+

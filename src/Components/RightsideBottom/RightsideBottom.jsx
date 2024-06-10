@@ -17,10 +17,10 @@ const RightsideBottom = () => {
         </div>
         <div className="row">
             <div className="col text-center fs-6 " style={{color:"gray"}}>
-            Opportunities are knocking on your door
+           Create a CV or add more details about you by clicking below
             </div>
         </div>
-        <div className="row mt-3 d-flex justify-content-center gap-3">
+        {/* <div className="row mt-3 d-flex justify-content-center gap-3">
             <div className="col-3   w-25 h-50" >
                  <img src={ProfileImg} alt=""  className="w-100 h-100 col-3 rounded-circle" style={{boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"}}/>
             </div>
@@ -32,11 +32,22 @@ const RightsideBottom = () => {
             <div className="col text-center p-2 fs-6" style={{color:"gray"}}>
             Rock, <span style={{color:"black"}}>aramco</span> is hiring!
             </div>
-        </div>
+        </div> */}
 
         <div className="row mt-1  d-flex justify-content-center mt-2 mb-3">
-            <Link to="/news" className="col-4 text-center p-1 px-3  fs-6 fw-bold" style={{border:"1px solid #0096FF",color:"#0096FF",borderRadius:"30px",cursor:"pointer",textDecoration:"none"}}>
-                Follow
+            <Link to="/UpdateProfile" className="col-4 text-center p-1 px-3  fs-6 fw-bold" style={{border:"1px solid #0096FF",color:"#0096FF",borderRadius:"30px",cursor:"pointer",textDecoration:"none"}}>
+                Update your profile
+            </Link>
+            <Link to="/CreateCV" className="col-4 text-center p-1 px-3  fs-6 fw-bold" style={{border:"1px solid #0096FF",color:"#0096FF",borderRadius:"30px",cursor:"pointer",textDecoration:"none"}}>
+                Create a new CV
+            </Link>
+        </div>
+        <div className="col text-center fs-6 " style={{color:"gray"}}>
+           Check our guide to help prepare for your interview 
+            </div>
+         <div className="row mt-1  d-flex justify-content-center mt-2 mb-3">
+            <Link to="/Interview" className="col-4 text-center p-1 px-3  fs-6 fw-bold" style={{border:"1px solid #0096FF",color:"#0096FF",borderRadius:"30px",cursor:"pointer",textDecoration:"none"}}>
+                Prepare for interview
             </Link>
         </div>
     </div> 

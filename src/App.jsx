@@ -30,6 +30,7 @@ import Test from "./Components/ResumeBuilder/test";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Datatable from "./Components/Dashboard/Datatable";
 import Media from "./Components/Media/Media";
+import ProfileV from "./Components/Dashboard/ProfileV";
 
 
 const App = () => {
@@ -71,9 +72,7 @@ const App = () => {
           <Route path="/CreateCV"  element={<CreateCV/>}/>
           <Route path="/test"  element={<Test/>}/>
           <Route path="/Dashboard"  element={<Datatable/>}/>
-          {/* <Route path="/Media"  element={<Media/>}/> */}
-
-
+           <Route path="/users/:id"  element={<ProfileV/>}/> 
         </Route>
 
 

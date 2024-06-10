@@ -96,7 +96,6 @@ const Datatable = () => {
       },
     },
   ];
-
   return (
     <div className="datatable">
       <div className="bigTitle">Welcome to your Dashboard</div> {/* Added big title */}

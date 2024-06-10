@@ -47,9 +47,9 @@ const SignupForm = () => {
     <div className="container-fluid h-100" style={{ backgroundColor: "#F3F2F0" }}>
       <div className="px-4">
         <img
-          src="https://logos-world.net/wp-content/uploads/2020/05/Linkedin-Logo.png"
+          src="src/images/jobnest.jpg"
           alt=""
-          style={{ height: "80px", width: "130px" }}
+          style={{ height: "100px", width: "200px" }}
         />
       </div>
       <div className="d-flex justify-content-center align-items-center mb-1">
@@ -149,7 +149,7 @@ const SignupForm = () => {
             </div>
             <div className="d-flex justify-content-center align-items-center mt-4 form-label">
               <p>
-                Already on LinkedIn? <Link to="/">Sign in</Link>
+                Already on JobNest ? <Link to="/">Sign in</Link>
               </p>
             </div>
           </form>
