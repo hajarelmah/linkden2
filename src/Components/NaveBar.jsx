@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
 import Lordicon from './Lordicon'; // Import the Lordicon component
 import Profile from "./ProFile";
@@ -28,7 +28,7 @@ const MessagingNavLink = ({ userId }) => {
       </span>
     </NavLink>
   );
-}
+};
 
 const NaveBar = () => {
   const [user, setUser] = useState(null);
@@ -62,12 +62,13 @@ const NaveBar = () => {
         className="row px-3 mx-xl-5 d-flex justify-content-around"
         style={{ gap: "10px" }}
       >
-        <img
-          src={Logo}
-          alt="Logo"
-          className="col-1 border p-0 my-2 img-fluid"
-          style={{ height: "30px", width: "30px" }}
-        />
+        <NavLink to="/home" className="col-1 p-0 my-2 img-fluid">
+          <img
+            src={Logo}
+            alt="Logo"
+            style={{ height: "40px", width: "40px" }}
+          />
+        </NavLink>
 
         <div
           className="col-1 p-0 d-flex justify-content-center align-item-center mx-1"
@@ -91,8 +92,6 @@ const NaveBar = () => {
           <div className="offcanvas-header d-flex justify-content-center align-item-center gap-4">
             <input
               type="text"
-              name=""
-              id=""
               className="p-2 w-75 fs-3"
               style={{ borderRadius: "5px", backgroundColor: "#F0F8FF" }}
             />
@@ -223,7 +222,7 @@ const NaveBar = () => {
           </span>
         </NavLink>
         <div className="col-1 p-0 dropdown mx-1 text-center d-lg-inline d-none">
-          <img
+                   <img
             src={`http://localhost:8000/${user?.pfp}`}
             alt="Profile"
             className="toggle my-xl-0 my-2"
@@ -286,3 +285,4 @@ const NaveBar = () => {
 };
 
 export default NaveBar;
+
